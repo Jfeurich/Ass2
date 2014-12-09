@@ -1,3 +1,4 @@
+package Model;
 
 public class Category implements Context{
 	private String description;
