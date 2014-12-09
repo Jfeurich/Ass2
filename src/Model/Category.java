@@ -14,7 +14,6 @@ public class Category implements Context{
 
 	public void addCategory(Category c){
 
-
 	}
 	/*public Category getCategory(){
 		return Category;
