@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Model.Pattern;
 
@@ -32,6 +33,15 @@ public class Disk {
 	 
 		System.out.println(json);
 	}
+	public void saveAllPatterns(ArrayList<Pattern> list){
+		Gson gson = new Gson();
+		
+		String json = gson.toJson(list);
+		try{
+			FileWrite
+		}
+		
+	}
 	public void loadPattern(File f){
 		Gson gson = new Gson();
 		 
@@ -46,10 +56,7 @@ public class Disk {
 	 
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-
-				
-		
+		}		
 	}
 
 }
