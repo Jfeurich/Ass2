@@ -1,16 +1,18 @@
 package logic;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import Model.Pattern;
 
 import com.google.gson.Gson;
 
 public class Disk {
-	public void savePattern(){
+	public void savePattern(Pattern p){
 		 
-		Pattern obj = new Pattern(null, null);
+		Pattern obj = p;
 		Gson gson = new Gson();
 	 
 		// convert java object to JSON format,
@@ -20,7 +22,7 @@ public class Disk {
 	 
 		try {
 			//write converted json data to a file named "file.json"
-			FileWriter writer = new FileWriter("/Users/jayfeurich/" + obj.getName() + ".json");
+			FileWriter writer = new FileWriter("/Users/jayfeurich/" + p.getName() + ".json");
 			writer.write(json);
 			writer.close();
 	 
@@ -30,13 +32,12 @@ public class Disk {
 	 
 		System.out.println(json);
 	}
-	public void loadPattern(){
+	public void loadPattern(File f){
 		Gson gson = new Gson();
 		 
 		try {
 	 
-			BufferedReader br = new BufferedReader(
-				new FileReader("/Users/jayfeurich/filename.json"));
+			BufferedReader br = new BufferedReader(new FileReader(f));
 	 
 			//convert the json string back to object
 			Pattern obj = gson.fromJson(br, Pattern.class);
