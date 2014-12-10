@@ -33,7 +33,7 @@ public class Disk {
 	 
 		System.out.println(json);
 	}
-	public void saveAllPatterns(ArrayList<Pattern> list){
+	/*public void saveAllPatterns(ArrayList<Pattern> list){
 		Gson gson = new Gson();
 		
 		String json = gson.toJson(list);
@@ -41,7 +41,7 @@ public class Disk {
 			FileWrite
 		}
 		
-	}
+	}*/
 	public void loadPattern(File f){
 		Gson gson = new Gson();
 		 
