@@ -11,11 +11,10 @@ import com.google.gson.Gson;
 public class Disk {
 	
 	public void savePattern(ArrayList<Pattern> p){
-		ArrayList<Pattern> obj = p;
 		Gson gson = new Gson();
 		// convert java object to JSON format,
 		// and returned as JSON formatted string
-		String json = gson.toJson(obj);
+		String json = gson.toJson(p);
 		try {
 			//write converted json data to a file named "file.json"
 			FileWriter writer = new FileWriter("/Users/jayfeurich/allepatterns.json");
