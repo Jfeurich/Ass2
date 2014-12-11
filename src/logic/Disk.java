@@ -42,7 +42,8 @@ public class Disk {
 		}
 		
 	}*/
-	public void loadPattern(File f){
+	public ArrayList<Pattern> loadPattern(File f){
+		ArrayList<Pattern> patterns = new ArrayList<>();
 		Gson gson = new Gson();
 		 
 		try {
@@ -52,11 +53,12 @@ public class Disk {
 			//convert the json string back to object
 			Pattern obj = gson.fromJson(br, Pattern.class);
 	 
-			System.out.println(obj);
+			patterns.add(obj);
 	 
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
+		return patterns;		
 	}
 
 }
