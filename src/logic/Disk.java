@@ -1,6 +1,5 @@
 package logic;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class Disk {
 		String json = gson.toJson(p);
 		try {
 			//write converted json data to a file named "file.json"
-			FileWriter writer = new FileWriter("/Users/jayfeurich/allepatterns.json");
+			FileWriter writer = new FileWriter("/Pattern_selector/JsonObjects/objects.json");
 			writer.write(json);
 			writer.close();
 		} catch (IOException e) {
@@ -25,13 +24,13 @@ public class Disk {
 		}
 	}
 
-	public ArrayList<Pattern> loadPattern(File f){
+	public ArrayList<Pattern> loadPattern(){
 		ArrayList<Pattern> patterns = new ArrayList<>();
 		Gson gson = new Gson();
 		 
 		try {
 	 
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			BufferedReader br = new BufferedReader(new FileReader("/Pattern_selector/JsonObjects/objects.json"));
 	 
 			//convert the json string back to object
 			Pattern obj = gson.fromJson(br, Pattern.class);
