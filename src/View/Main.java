@@ -7,8 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		ArrayList<Pattern> patterns = new ArrayList<>();
-		Pattern p1 = new Pattern();
-		patterns.add(p1);
+		patterns.add()
 		EditorFrame EF = new EditorFrame();
 		SelectorFrame MF = new SelectorFrame();
 	}

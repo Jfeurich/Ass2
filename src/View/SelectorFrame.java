@@ -3,12 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class SelectorFrame extends MyFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JLabel categoryLAB, subCategoryLAB;
 	private JComboBox categoryList, purposeList, scopeList;
-	
 	String[]categoryString = {"By Purpose", "By Scope"};
 	String[]purposeString = {"Creational", "Structional", "Behavioral"};
 	String[]scopeString = {"Class", "Object"};
@@ -22,6 +24,7 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 		hulp1.add(categoryLAB);
 		
 		categoryList = new JComboBox(categoryString);
+		//categoryList.setSelectedIndex(1);
 		categoryList.addActionListener(this);
 		hulp1.add(categoryList);
 		
@@ -33,11 +36,13 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 		hulp2.add(subCategoryLAB);
 		
 		purposeList = new JComboBox(purposeString);
+		//purposeList.setSelectedIndex(1);
 		purposeList.addActionListener(this);
 		purposeList.setVisible(false);
 		hulp2.add(purposeList);
 		
 		scopeList = new JComboBox(scopeString);
+		//scopeList.setSelectedIndex(2);
 		scopeList.addActionListener(this);
 		scopeList.setVisible(false);
 		hulp2.add(scopeList);
