@@ -11,9 +11,9 @@ import Model.Pattern;
 import com.google.gson.Gson;
 
 public class Disk {
-	public void savePattern(Pattern p){
+	public void savePattern(ArrayList<Pattern> p){
 		 
-		Pattern obj = p;
+		ArrayList<Pattern> obj = p;
 		Gson gson = new Gson();
 	 
 		// convert java object to JSON format,
@@ -23,7 +23,7 @@ public class Disk {
 	 
 		try {
 			//write converted json data to a file named "file.json"
-			FileWriter writer = new FileWriter("/Users/jayfeurich/" + p.getName() + ".json");
+			FileWriter writer = new FileWriter("/Users/jayfeurich/allepatterns.json");
 			writer.write(json);
 			writer.close();
 	 
@@ -33,15 +33,7 @@ public class Disk {
 	 
 		System.out.println(json);
 	}
-	/*public void saveAllPatterns(ArrayList<Pattern> list){
-		Gson gson = new Gson();
-		
-		String json = gson.toJson(list);
-		try{
-			FileWrite
-		}
-		
-	}*/
+
 	public ArrayList<Pattern> loadPattern(File f){
 		ArrayList<Pattern> patterns = new ArrayList<>();
 		Gson gson = new Gson();
