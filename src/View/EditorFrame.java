@@ -130,7 +130,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			
 		}
 		//export button
-		
+		/*
 		if(event.getSource() == exportBTN){
 			String problem = problemTF.getText();
 			String solution = solutionTF.getText();
@@ -143,6 +143,6 @@ public class EditorFrame extends JFrame implements ActionListener {
 				e.printStackTrace();
 			}
 			// call naar export.java
-		}
+		}*/
 	}
 }
