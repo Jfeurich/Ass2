@@ -12,9 +12,10 @@ public class Pattern {
 		setSolution(sol);
 	}
 
-	/*public Consequence getConsequence(){
+	public Consequence getConsequence(){
+		return null;
 		
-	}*/
+	}
 	public void addConsequence( Consequence  c){
 		allConsequences.add(c);
 	}
