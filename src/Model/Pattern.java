@@ -1,15 +1,21 @@
 package Model;
-import java.awt.List;
 import java.util.ArrayList;
 
 public class Pattern {
-	private String name, solution;
+	private String name, solution, description;
 	ArrayList<Consequence> allConsequences = new ArrayList<Consequence>();
 	ArrayList<Context> context = new ArrayList<Context>();
 	ArrayList<Problem> allProblems = new ArrayList<Problem>();
-	public Pattern(String nm, String sol){
+	public Pattern() {
+	}
+	public Pattern(String nm,String sol){
+		this.name = nm;
+		this.solution = sol;
+	}
+	public Pattern(String nm, String sol,String desc){
 		setName(nm);
 		setSolution(sol);
+		desc = this.description;
 	}
 
 	public Consequence getConsequence(){
