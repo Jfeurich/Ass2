@@ -7,9 +7,10 @@ public class Pattern {
 	ArrayList<Consequence> allConsequences = new ArrayList<Consequence>();
 	ArrayList<Context> context = new ArrayList<Context>();
 	ArrayList<Problem> allProblems = new ArrayList<Problem>();
+	
 	public Pattern(String nm, String sol){
-		setName(nm);
-		setSolution(sol);
+		name = nm;
+		solution = sol;
 	}
 
 	public Consequence getConsequence(){
