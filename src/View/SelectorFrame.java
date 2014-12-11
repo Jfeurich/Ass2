@@ -7,10 +7,14 @@ import javax.swing.border.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Model.Category;
+
 public class SelectorFrame extends MyFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JLabel categoryLAB, subCategoryLAB;
 	private JComboBox categoryList, purposeList, scopeList;
+	
+	
 	String[]categoryString = {"By Purpose", "By Scope"};
 	String[]purposeString = {"Creational", "Structional", "Behavioral"};
 	String[]scopeString = {"Class", "Object"};
