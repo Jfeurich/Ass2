@@ -1,7 +1,8 @@
 package View;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
+
+import Model.Pattern;
 
 public class Main {
 

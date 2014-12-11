@@ -13,9 +13,9 @@ public class Pattern {
 		this.solution = sol;
 	}
 	public Pattern(String nm, String sol,String desc){
-		setName(nm);
-		setSolution(sol);
-		desc = this.description;
+		this.name = nm;
+		this.solution = sol;
+		this.description = desc;
 	}
 
 	public Consequence getConsequence(){
