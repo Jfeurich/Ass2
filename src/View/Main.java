@@ -1,16 +1,18 @@
 package View;
+import Test.Client;
 
 import java.util.ArrayList;
-
-import Model.Pattern;
+import java.util.regex.Pattern;
 
 public class Main {
 
 	public static void main(String[] args) {
 		ArrayList<Pattern> patterns = new ArrayList<>();
-		Pattern p1 = new Pattern();
+	//	patterns.add()
 		EditorFrame EF = new EditorFrame();
 		SelectorFrame MF = new SelectorFrame();
+		
+	
 	}
 
 }
