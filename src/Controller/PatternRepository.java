@@ -4,10 +4,31 @@ import java.util.ArrayList;
 import Model.Pattern;
 
 public class PatternRepository implements Container {
-	private ArrayList<Pattern> patterns = new ArrayList<Pattern>();
+	   public String names[] = {"Robert" , "John" ,"Julie" , "Lora"};
 
-	public Iterator getIterator(){
-		return new PatternIterator();
+	   @Override
+	   public Iterator getIterator() {
+	      return new PatternIterator();
+	   }
+
+	   private class PatternIterator implements Iterator {
+
+	      int index;
+
+	      @Override
+	      public boolean hasNext() {
+	         if(index < names.length){
+	            return true;
+	         }
+	         return false;
+	      }
+
+	      @Override
+	      public Object next() {
+	         if(this.hasNext()){
+	            return names[index++];
+	         }
+	         return null;
+	      }		
+	   }
 	}
-
-}

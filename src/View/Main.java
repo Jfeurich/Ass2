@@ -1,8 +1,10 @@
 package View;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Model.Category;
 import Model.Pattern;
+import Controller.PatternRepository;
 
 public class Main {
 
@@ -26,7 +28,11 @@ public class Main {
 		EditorFrame EF = new EditorFrame();
 		//SelectorFrame MF = new SelectorFrame();
 		
-		
+		PatternRepository patternRepository = new PatternRepository();
+		 for(Controller.Iterator iter = patternRepository.getIterator(); iter.hasNext();){
+	         String name = (String)iter.next();
+	         System.out.println("Pattern : " + name);
+	      } 	
 	
 	}
 
