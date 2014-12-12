@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Pattern {
 	private String name, solution;
-	ArrayList<Consequence> allConsequences = new ArrayList<Consequence>();
-	ArrayList<Context> context = new ArrayList<Context>();
-	ArrayList<Problem> allProblems = new ArrayList<Problem>();
+	private ArrayList<Consequence> allConsequences = new ArrayList<Consequence>();
+	private ArrayList<Context> context = new ArrayList<Context>();
+	private ArrayList<Problem> allProblems = new ArrayList<Problem>();
 	
 	
 	public Pattern(String nm, String sol){
@@ -37,4 +37,13 @@ public class Pattern {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public ArrayList<Context> getContext() {
+		return context;
+	}
+
+	public void setContext(ArrayList<Context> context) {
+		this.context = context;
+	}
+	
 }
