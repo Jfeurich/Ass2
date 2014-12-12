@@ -1,6 +1,5 @@
 package View;
 
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -25,7 +24,6 @@ public class EditorFrame extends JFrame implements ActionListener {
 	
 	private JPanel contextPANEL, problemPANEL,solutionPANEL, diagramPANEL, consequencePANEL;
 	//Create a file chooser
-	
 
 	public EditorFrame() {
 		setLayout(new FlowLayout());
