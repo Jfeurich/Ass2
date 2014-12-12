@@ -24,7 +24,7 @@ public class Main {
 		
 		Pattern p = new Pattern("","");
 		EditorFrame EF = new EditorFrame();
-		SelectorFrame MF = new SelectorFrame();
+		//SelectorFrame MF = new SelectorFrame();
 		
 		
 	

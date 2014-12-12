@@ -1,7 +1,7 @@
 package Controller;
 public class PatternIterator implements Iterator{
 	int index;
-
+	
 
 
 	public boolean hasNext(){
