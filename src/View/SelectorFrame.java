@@ -1,25 +1,26 @@
 package View;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import Model.Category;
+import Model.Pattern;
 
 public class SelectorFrame extends MyFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JLabel categoryLAB, subCategoryLAB;
 	private JComboBox categoryList, purposeList, scopeList;
-	
+	private ArrayList<Pattern> patterns;
 	
 	String[]categoryString = {"By Purpose", "By Scope"};
 	String[]purposeString = {"Creational", "Structional", "Behavioral"};
 	String[]scopeString = {"Class", "Object"};
 	
-	public SelectorFrame(){
+	public SelectorFrame(ArrayList<Pattern> patterns){
 		setLayout(new FlowLayout());
 		JPanel hulp1 = new JPanel();
 		add(hulp1);
@@ -27,7 +28,7 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 		categoryLAB = new JLabel("Category");
 		hulp1.add(categoryLAB);
 		
-		categoryList = new JComboBox(categoryString);
+		categoryList = new JComboBox();
 		//categoryList.setSelectedIndex(1);
 		categoryList.addActionListener(this);
 		hulp1.add(categoryList);

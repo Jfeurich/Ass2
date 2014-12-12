@@ -23,8 +23,10 @@ public class Main {
 		
 		
 		Pattern p = new Pattern("","");
+		patterns.add(p);
+		
 		EditorFrame EF = new EditorFrame();
-		SelectorFrame MF = new SelectorFrame();
+		SelectorFrame MF = new SelectorFrame(patterns);
 		
 		
 	
