@@ -97,6 +97,27 @@ public class EditorFrame extends JFrame implements ActionListener {
 		this.add(plaatjeslabel);
 		Image image = null;
 		
+		
+		 //Imagepadfile ophalen van Pattern
+		for(Pattern p  : patterns){
+			Image image3;
+			String s =p.getDiagram();
+			try {
+				image3 = ImageIO.read(new File(s));
+				JLabel lab = new JLabel();
+				lab.setIcon(new ImageIcon(image3));
+				this.add(lab);
+				this.setVisible(true);
+				this.repaint();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			////
+		
+		}
+		
 		setSize(400, 500);
 		setVisible(true);
 		setTitle("Editor Pattern");
@@ -114,23 +135,21 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String context = contextTF.getText();
 			String contextdefinition = contextdefTF.getText();
 			// nieuwe arraylist
-			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
-			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
-			
-			// context
+			String filepadImage = "JsonObjects/diagrammen/"+ imageName;
+			Pattern nieuwePattern = new Pattern(problem, filepadImage ,solution,consequence);
+			System.out.println("Filepad:" + (nieuwePattern.getDiagram()));
+			// context toevoegen
 			Context c = new Context(context,contextdefinition);
 			ArrayList<Context> contextArrayList = new ArrayList<Context>();
 			contextArrayList.add(c);
+			
 			nieuwePattern.setContext(contextArrayList);
-			//
+			// patterns opslaan
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns);
 			Json.savePattern(patterns);
 			
 			/* Image bestand opslaan in map */
-			String filepadImage = "JsonObjects/diagrammen/"+ imageName;
-		
-			
 			 File outputfile = new File(filepadImage);
 			  BufferedImage bi;
 			try {
@@ -142,38 +161,6 @@ public class EditorFrame extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			  
-			/* test om te kijken of imagestring ook terug kan worden geconvert naar afbeelding */
-			
-			String stringIMG = nieuwePattern.getDiagram();
-			Base64 base = new Base64(false);		
-			byte[] b = base.decodeBase64(stringIMG);
-			
-	
-			
-		
-			BufferedImage imag;
-			try {
-				
-			 imag=ImageIO.read(new ByteArrayInputStream(b));
-				
-				System.out.println("B:" + b);
-				System.out.println("bImageFromConvert:" + imag);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
- 
-			
-			/*
-			
-			JLabel test = new JLabel(new ImageIcon(bImageFromConvert));
-			this.add(test);
-		
-			this.setVisible(true);
-			this.repaint();
-			System.out.println(stringIMG);*/
-	
 		}
 		
 		if(event.getSource() == loadBTN){
@@ -186,8 +173,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 		}
 		
 		if(event.getSource() == importBTN){
-			
-			
+
 			/* decode code
 			byte[] b = base.decodeBase64(encodedImage);
 			BufferedImage img2 = ImageIO.read(new ByteArrayInputStream(b));*/
@@ -217,6 +203,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 				e.printStackTrace();
 			}
 		
+			// plaatje op scherm zetten
 			plaatjeslabel.setIcon(new ImageIcon(image));
 			this.add(plaatjeslabel);
 			this.setVisible(true);
