@@ -8,7 +8,7 @@ public class Pattern {
 	ArrayList<Consequence> allConsequences = new ArrayList<Consequence>();
 	ArrayList<Context> context = new ArrayList<Context>();
 	ArrayList<Problem> allProblems = new ArrayList<Problem>();
-	private Image diagram; //
+	private String diagram; //
 	
 	private String problem;
 	
@@ -17,7 +17,7 @@ public class Pattern {
 		solution = sol;
 	}
 
-	public Pattern(String prob, Image img, String sol, String consequence){
+	public Pattern(String prob, String img, String sol, String consequence){
 		problem = prob;
 		solution = sol;
 		diagram = img;
@@ -48,11 +48,11 @@ public class Pattern {
 	}
 	
 	/// code toegevoegd
-	public Image getDiagram(){
+	public String getDiagram(){
 		return diagram;
 	}
 	
-	public void setDiagram(Image dia){
+	public void setDiagram(String dia){
 		this.diagram = dia;
 	}
 	
