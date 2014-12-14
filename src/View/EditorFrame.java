@@ -20,6 +20,7 @@ import javax.swing.*;
 import logic.Disk; // importeren export class
 import Model.Context;
 import Model.Pattern;
+import java.io.InputStream;
 
 public class EditorFrame extends JFrame implements ActionListener {
 	private JTextField contextTF, contextdefTF, problemTF, solutionTF, diagramTF, consequencesTF;
@@ -128,7 +129,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String filepadImage = "JsonObjects/diagrammen/"+ imageName;
 		
 			
-			 File outputfile = new File("saved.png");
+			 File outputfile = new File(filepadImage);
 			  BufferedImage bi;
 			try {
 				bi = ImageIO.read(new File(filepad));
@@ -139,7 +140,37 @@ public class EditorFrame extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			   
+			  
+			/* test om te kijken of imagestring ook terug kan worden geconvert naar afbeelding */
+			
+			String stringIMG = nieuwePattern.getDiagram();
+			Base64 base = new Base64(false);		
+			byte[] b = base.decodeBase64(stringIMG);
+			
+	
+			
+		
+			BufferedImage imag;
+			try {
+				
+			 imag=ImageIO.read(new ByteArrayInputStream(b));
+				
+				System.out.println("B:" + b);
+				System.out.println("bImageFromConvert:" + imag);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 
+			
+			/*
+			
+			JLabel test = new JLabel(new ImageIcon(bImageFromConvert));
+			this.add(test);
+		
+			this.setVisible(true);
+			this.repaint();
+			System.out.println(stringIMG);*/
 	
 		}
 		
@@ -153,6 +184,8 @@ public class EditorFrame extends JFrame implements ActionListener {
 		}
 		
 		if(event.getSource() == importBTN){
+			
+			
 			/* decode code
 			byte[] b = base.decodeBase64(encodedImage);
 			BufferedImage img2 = ImageIO.read(new ByteArrayInputStream(b));*/
