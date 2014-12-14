@@ -150,6 +150,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			Pattern nieuwePattern  = new Pattern(problem,image,solution,consequence);
 			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 			patterns.add(nieuwePattern);
+			Disk.savePattern(patterns);
 			
 		
 		}

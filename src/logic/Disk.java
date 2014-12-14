@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 
 public class Disk {
 	
-	public void savePattern(ArrayList<Pattern> p){
+	public static void savePattern(ArrayList<Pattern> p){
 		Gson gson = new Gson();
 		// convert java object to JSON format,
 		// and returned as JSON formatted string
