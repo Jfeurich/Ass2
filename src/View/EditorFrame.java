@@ -19,6 +19,7 @@ import javax.swing.*;
 
 import logic.Disk; // importeren export class
 import Model.Pattern;
+
 public class EditorFrame extends JFrame implements ActionListener {
 	private JTextField contextTF, problemTF, solutionTF, diagramTF, consequencesTF;
 	private JLabel contextLAB, problemLAB, solutionLAB, diagramLAB, consequencesLAB, plaatjeslabel;///
