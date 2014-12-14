@@ -9,17 +9,27 @@ import com.google.gson.Gson;
 
 public class Disk {
 	
-	public static void savePattern(ArrayList<Pattern> p){
+	public static void savePattern(ArrayList<Pattern> p,String filename){
 		Gson gson = new Gson();
 		// convert java object to JSON format,
 		// and returned as JSON formatted string
 		String json = gson.toJson(p);
 		try {
 			//write converted json data to a file named "file.json"
-			FileWriter writer = new FileWriter("JsonObjects/objects.json");
-			writer.write(json);
-			writer.close();
-		} catch (IOException e) {
+			if(filename != null){
+				FileWriter writer = new FileWriter("JsonObjects/" + filename + ".json");
+				writer.write(json);
+				writer.close();
+			}
+			else{
+				FileWriter writer = new FileWriter("JsonObjects/objects.json");
+				writer.write(json);
+				writer.close();
+			}
+			
+
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -42,5 +52,4 @@ public class Disk {
 		}
 		return patterns;		
 	}
-
 }

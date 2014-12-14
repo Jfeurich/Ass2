@@ -25,17 +25,25 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private JLabel contextLAB, problemLAB, solutionLAB, diagramLAB, consequencesLAB, plaatjeslabel;
 	private String filepath, filepad;///
 	private JButton uploadBTN;
-	private JButton saveBTN, importBTN, exportBTN;
+	private JButton saveBTN, loadBTN, importBTN, exportBTN;
 	private Image image;////
 	private JPanel contextPANEL, problemPANEL,solutionPANEL, diagramPANEL, consequencePANEL;
 	private String stringImage;
+	private ArrayList<Pattern> patterns;
+	private JList lister;
 	//Create a file chooser
 
 	public EditorFrame(ArrayList<Pattern> patterns) {
 		setLayout(new FlowLayout());
 		// save button
-		saveBTN = new JButton("Save/Load"); add(saveBTN);
+		saveBTN = new JButton("Save"); add(saveBTN);
 		saveBTN.addActionListener(this);
+		
+		loadBTN = new JButton("Load");add(loadBTN);
+		loadBTN.addActionListener(this);
+		
+		JList<String> lister = new JList<String>();
+		
 		// panels
 		contextPANEL = new JPanel();
 		add(contextPANEL);
@@ -93,9 +101,13 @@ public class EditorFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event){
 		// save button
 		if(event.getSource() == saveBTN){
+			//sla de gewijzigde patterns op in het JSon bestand
+			Disk.savePattern(patterns,null);
 		}
 		
-		//import button
+		if(event.getSource() == loadBTN){
+			//haal het geselecteerde patroon op uit de arraylijst en vul de velden in
+		}
 		
 		if(event.getSource() == importBTN){
 			/* decode code
@@ -105,7 +117,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 		}
 		
 		if(event.getSource() == uploadBTN){
-			  
+			//Koppel een plaatje aan het pattern
 			FileDialog fd = new FileDialog(this, "Choose a file", FileDialog.LOAD);
 			fd.setDirectory("C:\\");
 			fd.setFile("*.png");
@@ -116,12 +128,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 			  System.out.println("You cancelled the choice");
 			else
 				filepath = "" + filename;
-			System.out.println("filterPath:" + filterPath);
-			  System.out.println("You chose " + filename);
-
-			////////////////
-			 filepad = filterPath + filename;
-			
+				System.out.println("filterPath:" + filterPath);
+				System.out.println("You chose " + filename);
+				filepad = filterPath + filename;
 			try {
 				File sourceimage = new File(filepad);
 				image = ImageIO.read(sourceimage);
@@ -133,10 +142,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			this.add(plaatjeslabel);
 			this.setVisible(true);
 			this.repaint();
-			/////////////////
-			
-			// v2 //
-			
+
 			// Image omzetten voor JSON
 			BufferedImage img;
 			try {
@@ -164,19 +170,17 @@ public class EditorFrame extends JFrame implements ActionListener {
 		
 		
 		if(event.getSource() == exportBTN){
+			//Hier wordt de arraylijst naar een te exporteren JSon bestand omgezet.
 			String problem = problemTF.getText();
-			
 			String solution = solutionTF.getText();
 			String consequence = consequencesTF.getText();
-			
-			
 			// nieuwe arraylist
 			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
 			
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
 			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 			patterns.add(nieuwePattern);
-			Disk.savePattern(patterns);
+			Disk.savePattern(patterns,"export");
 			
 		
 		}
