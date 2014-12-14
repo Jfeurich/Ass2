@@ -8,15 +8,13 @@ import javax.swing.border.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import Model.Category;
+import Model.Context;
 import Model.Pattern;
 
 public class SelectorFrame extends MyFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JLabel categoryLAB, subCategoryLAB;
 	private JComboBox categoryList, purposeList, scopeList;
-	
-	
 	ArrayList<String> categoryString = new ArrayList<>();
 	ArrayList<String> purposeString = new ArrayList<>(); 
 	ArrayList<String> scopeString = new ArrayList<>();

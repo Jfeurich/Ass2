@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Pattern {
 	private String name, solution;
-	ArrayList<Consequence> allConsequences = new ArrayList<Consequence>();
-	ArrayList<Context> context = new ArrayList<Context>();
-	ArrayList<Problem> allProblems = new ArrayList<Problem>();
+	private ArrayList<Consequence> allConsequences = new ArrayList<Consequence>();
+	private ArrayList<Context> context = new ArrayList<Context>();
+	private ArrayList<Problem> allProblems = new ArrayList<Problem>();
 	private String diagram; //
 	
 	private String problem;
@@ -47,7 +47,6 @@ public class Pattern {
 		this.name = name;
 	}
 	
-	/// code toegevoegd
 	public String getDiagram(){
 		return diagram;
 	}
@@ -63,6 +62,22 @@ public class Pattern {
 	public String toString(){
 		String s = "Pattern:" + getProblem() ;
 		return s;
+	}
+
+	public ArrayList<Context> getContext() {
+		return context;
+	}
+
+	public void setContext(ArrayList<Context> context) {
+		this.context = context;
+	}
+
+	public ArrayList<Problem> getAllProblems() {
+		return allProblems;
+	}
+
+	public void setAllProblems(ArrayList<Problem> allProblems) {
+		this.allProblems = allProblems;
 	}
 	
 	////

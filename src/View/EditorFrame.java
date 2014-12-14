@@ -31,7 +31,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private String stringImage;
 	//Create a file chooser
 
-	public EditorFrame() {
+	public EditorFrame(ArrayList<Pattern> patterns) {
 		setLayout(new FlowLayout());
 		// save button
 		saveBTN = new JButton("Save/Load"); add(saveBTN);

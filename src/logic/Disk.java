@@ -24,7 +24,7 @@ public class Disk {
 		}
 	}
 
-	public ArrayList<Pattern> loadPattern(){
+	public static ArrayList<Pattern> loadPattern(){
 		ArrayList<Pattern> patterns = new ArrayList<>();
 		Gson gson = new Gson();
 		 
