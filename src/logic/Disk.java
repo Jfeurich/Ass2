@@ -1,8 +1,15 @@
 package logic;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,6 +23,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 public class Disk {
+	/*
 	public static void savePattern(ArrayList<Pattern> p,String filename){
 		String fn;
 		Gson gson = new Gson();
@@ -30,7 +38,7 @@ public class Disk {
 			else{
 				fn = "JsonObjects/" + filename + ".json";
 			}
-			FileWriter writer = new FileWriter("fn");
+			FileWriter writer = new FileWriter(fn);
 			writer.write(json);
 			writer.close();
 		} 
@@ -43,13 +51,13 @@ public class Disk {
 		ArrayList<Pattern> patterns = new ArrayList<>();
 		
 		Gson gson = new Gson();
+		JsonElement element = gson.toJsonTree(patterns, new TypeToken<ArrayList<Pattern>>() {}.getType());
 		try {
-
 			BufferedReader br = new BufferedReader(new FileReader("JsonObjects/objects.json"));
 			JsonParser jsonParser = new JsonParser();
 			String json = gson.toJson(br);
-			JsonObject jo = (JsonObject)jsonParser.parse(json);
-			JsonArray ja = jo.getAsJsonArray();
+			JsonArray ja = (JsonArray) jsonParser.parse(json);
+			j
 			//convert the json string back to object
 
 			//Pattern obj = gson.fromJson(br, Pattern.class);
@@ -58,5 +66,34 @@ public class Disk {
 			e.printStackTrace();
 		}
 		return patterns;		
+	}*/
+	public static void savePattern(ArrayList<Pattern> p,String filename){
+	    try (
+	      FileOutputStream fos = new FileOutputStream("JsonObjects/objects.json");
+	      ObjectOutputStream oos = new ObjectOutputStream(fos);
+	    ){
+	      oos.writeObject(p);
+	      oos.close();
+	    }  
+	    catch(IOException ex){
+	      ex.printStackTrace();
+	    }
+	}
+	public static ArrayList<Pattern> loadPattern(){
+		ArrayList<Pattern> patterns = new ArrayList<>();
+	
+		try {
+		FileInputStream fis = new FileInputStream("JsonObjects/objects.json");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		try {
+			patterns =(ArrayList<Pattern>) ois.readObject();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		return patterns;
 	}
 }

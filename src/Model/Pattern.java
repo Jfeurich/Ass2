@@ -1,9 +1,10 @@
 package Model;
 import java.awt.Image;
 import java.awt.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pattern {
+public class Pattern implements Serializable {
 	private String name, solution;
 	private String allConsequences;
 	private ArrayList<Context> context = new ArrayList<Context>();
