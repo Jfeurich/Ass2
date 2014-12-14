@@ -105,22 +105,22 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String solution = solutionTF.getText();
 			String consequence = consequencesTF.getText();
 			// Image omzetten voor JSON
-						BufferedImage img;
-						try {
-							img = ImageIO.read(new File(filepad));
-							ByteArrayOutputStream baos = new ByteArrayOutputStream();
-							ImageIO.write(img, "jpg", baos);
-							baos.flush();
-							Base64 base = new Base64(false);
-							String encodedImage = base.encodeToString(baos.toByteArray());
-							baos.close();
-							encodedImage = java.net.URLEncoder.encode(encodedImage, "ISO-8859-1");
-							setStringImage(encodedImage);
-						}
-						catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+			BufferedImage img;
+			try {
+				img = ImageIO.read(new File(filepad));
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ImageIO.write(img, "jpg", baos);
+				baos.flush();
+				Base64 base = new Base64(false);
+				String encodedImage = base.encodeToString(baos.toByteArray());
+				baos.close();
+				encodedImage = java.net.URLEncoder.encode(encodedImage, "ISO-8859-1");
+				setStringImage(encodedImage);
+			}
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			// nieuwe arraylist
 			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
