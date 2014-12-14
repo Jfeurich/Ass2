@@ -16,7 +16,7 @@ public class Disk {
 		String json = gson.toJson(p);
 		try {
 			//write converted json data to a file named "file.json"
-			FileWriter writer = new FileWriter("/Pattern_selector/JsonObjects/objects.json");
+			FileWriter writer = new FileWriter("JsonObjects/objects.json");
 			writer.write(json);
 			writer.close();
 		} catch (IOException e) {
@@ -30,7 +30,7 @@ public class Disk {
 		 
 		try {
 	 
-			BufferedReader br = new BufferedReader(new FileReader("/Pattern_selector/JsonObjects/objects.json"));
+			BufferedReader br = new BufferedReader(new FileReader("JsonObjects/objects.json"));
 	 
 			//convert the json string back to object
 			Pattern obj = gson.fromJson(br, Pattern.class);
