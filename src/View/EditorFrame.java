@@ -3,6 +3,7 @@ package View;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -10,7 +11,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+
 import org.apache.commons.codec.binary.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -24,6 +27,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private JButton saveBTN, importBTN, exportBTN;
 	private Image image;////
 	private JPanel contextPANEL, problemPANEL,solutionPANEL, diagramPANEL, consequencePANEL;
+	private String stringImage;
 	//Create a file chooser
 
 	public EditorFrame() {
@@ -93,6 +97,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 		//import button
 		
 		if(event.getSource() == importBTN){
+			/* decode code
+			byte[] b = base.decodeBase64(encodedImage);
+			BufferedImage img2 = ImageIO.read(new ByteArrayInputStream(b));*/
 			// call naar import.java
 		}
 		
@@ -129,7 +136,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			
 			// v2 //
 			
-			
+			// Image omzetten voor JSON
 			BufferedImage img;
 			try {
 				img = ImageIO.read(new File(filepad));
@@ -140,6 +147,13 @@ public class EditorFrame extends JFrame implements ActionListener {
 				String encodedImage = base.encodeToString(baos.toByteArray());
 				baos.close();
 				encodedImage = java.net.URLEncoder.encode(encodedImage, "ISO-8859-1");
+				
+				
+				setStringImage(encodedImage);
+				
+				
+				
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -154,7 +168,11 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String solution = solutionTF.getText();
 			String consequence = consequencesTF.getText();
 			
-			Pattern nieuwePattern  = new Pattern(problem,image,solution,consequence);
+			
+			// nieuwe arraylist
+			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
+			
+			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
 			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns);
@@ -164,5 +182,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 			
 			// call naar export.java
 		
+	}
+	
+	public void  setStringImage(String s){
+		 stringImage = s;
 	}
 }
