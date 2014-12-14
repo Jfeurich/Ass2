@@ -38,12 +38,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 		// save button
 		saveBTN = new JButton("Save"); add(saveBTN);
 		saveBTN.addActionListener(this);
-		
 		loadBTN = new JButton("Load");add(loadBTN);
 		loadBTN.addActionListener(this);
-		
-		JList<String> lister = new JList<String>();
-		
+		JList lister = new JList(patterns.toArray());
 		// panels
 		contextPANEL = new JPanel();
 		add(contextPANEL);
@@ -102,11 +99,24 @@ public class EditorFrame extends JFrame implements ActionListener {
 		// save button
 		if(event.getSource() == saveBTN){
 			//sla de gewijzigde patterns op in het JSon bestand
+			//Hier wordt de arraylijst naar een te exporteren JSon bestand omgezet.
+			String problem = problemTF.getText();
+			String solution = solutionTF.getText();
+			String consequence = consequencesTF.getText();
+			// nieuwe arraylist
+			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
+			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
+			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
+			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns,null);
 		}
 		
 		if(event.getSource() == loadBTN){
 			//haal het geselecteerde patroon op uit de arraylijst en vul de velden in
+			Pattern p = (Pattern) lister.getSelectedValue();
+			contextLAB.setText(p.getAllConsequences());
+			problemLAB.setText(p.getAllProblems());
+			plaatjeslabel.
 		}
 		
 		if(event.getSource() == importBTN){
@@ -154,14 +164,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 				String encodedImage = base.encodeToString(baos.toByteArray());
 				baos.close();
 				encodedImage = java.net.URLEncoder.encode(encodedImage, "ISO-8859-1");
-				
-				
 				setStringImage(encodedImage);
-				
-				
-				
-
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}             
@@ -170,19 +175,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 		
 		
 		if(event.getSource() == exportBTN){
-			//Hier wordt de arraylijst naar een te exporteren JSon bestand omgezet.
-			String problem = problemTF.getText();
-			String solution = solutionTF.getText();
-			String consequence = consequencesTF.getText();
-			// nieuwe arraylist
-			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
-			
-			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
-			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
-			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns,"export");
-			
-		
 		}
 			
 			// call naar export.java
