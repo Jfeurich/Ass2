@@ -28,6 +28,7 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 				subcategoryString.add("");
 				scopeString.add("");
 			}
+			
 		}
 		setLayout(new FlowLayout());
 		JPanel hulp1 = new JPanel();

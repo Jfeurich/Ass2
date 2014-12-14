@@ -29,12 +29,11 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private Image image;////
 	private JPanel contextPANEL, problemPANEL,solutionPANEL, diagramPANEL, consequencePANEL;
 	private String stringImage;
-	private JList lister;
 	private ArrayList<Pattern> patterns;
+	private JList lister;
 	//Create a file chooser
 
-	public EditorFrame(ArrayList<Pattern> patterns2) {
-		this.patterns = patterns2;
+	public EditorFrame(ArrayList<Pattern> patterns) {
 		setLayout(new FlowLayout());
 		// save button
 		saveBTN = new JButton("Save"); add(saveBTN);
@@ -104,26 +103,10 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String problem = problemTF.getText();
 			String solution = solutionTF.getText();
 			String consequence = consequencesTF.getText();
-			// Image omzetten voor JSON
-						BufferedImage img;
-						try {
-							img = ImageIO.read(new File(filepad));
-							ByteArrayOutputStream baos = new ByteArrayOutputStream();
-							ImageIO.write(img, "jpg", baos);
-							baos.flush();
-							Base64 base = new Base64(false);
-							String encodedImage = base.encodeToString(baos.toByteArray());
-							baos.close();
-							encodedImage = java.net.URLEncoder.encode(encodedImage, "ISO-8859-1");
-							setStringImage(encodedImage);
-						}
-						catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 			// nieuwe arraylist
 			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
+			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns,null);
 		}
@@ -131,9 +114,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 		if(event.getSource() == loadBTN){
 			//haal het geselecteerde patroon op uit de arraylijst en vul de velden in
 			Pattern p = (Pattern) lister.getSelectedValue();
-			contextLAB.setText(p.getConsequence());
-			problemLAB.setText(p.getProblem());
-			//plaatjeslabel.
+			contextLAB.setText(p.getAllConsequences());
+			problemLAB.setText(p.getAllProblems());
+			
 		}
 		
 		if(event.getSource() == importBTN){
@@ -170,7 +153,23 @@ public class EditorFrame extends JFrame implements ActionListener {
 			this.setVisible(true);
 			this.repaint();
 
-			             
+			// Image omzetten voor JSON
+			BufferedImage img;
+			try {
+				img = ImageIO.read(new File(filepad));
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ImageIO.write(img, "jpg", baos);
+				baos.flush();
+				Base64 base = new Base64(false);
+				String encodedImage = base.encodeToString(baos.toByteArray());
+				baos.close();
+				encodedImage = java.net.URLEncoder.encode(encodedImage, "ISO-8859-1");
+				setStringImage(encodedImage);
+			}
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}             
 			
 		}
 		
