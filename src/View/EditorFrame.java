@@ -18,11 +18,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import logic.Disk; // importeren export class
+import Model.Context;
 import Model.Pattern;
 
 public class EditorFrame extends JFrame implements ActionListener {
-	private JTextField contextTF, problemTF, solutionTF, diagramTF, consequencesTF;
-	private JLabel contextLAB, problemLAB, solutionLAB, diagramLAB, consequencesLAB, plaatjeslabel;
+	private JTextField contextTF, contextdefTF, problemTF, solutionTF, diagramTF, consequencesTF;
+	private JLabel contextLAB, contextdefLAB, problemLAB, solutionLAB, diagramLAB, consequencesLAB, plaatjeslabel;
 	private String filepath, filepad;///
 	private JButton uploadBTN;
 	private JButton saveBTN, loadBTN, importBTN, exportBTN;
@@ -30,6 +31,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private JPanel contextPANEL, problemPANEL,solutionPANEL, diagramPANEL, consequencePANEL;
 	private String stringImage;
 	private ArrayList<Pattern> patterns;
+	private ArrayList<Context> context;
 	private JList lister;
 	
 	private String imageName;
@@ -63,6 +65,10 @@ public class EditorFrame extends JFrame implements ActionListener {
 		
 		contextLAB = new JLabel("Context"); contextPANEL.add(contextLAB);
 		contextTF = new JTextField(20); contextPANEL.add(contextTF);
+		
+		// context definition
+		contextdefLAB = new JLabel("Context Definition"); contextPANEL.add(contextLAB);
+		contextdefTF = new JTextField(20); contextPANEL.add(contextTF);
 		
 		
 		problemLAB = new JLabel("Problem"); problemPANEL.add(problemLAB);
@@ -106,9 +112,19 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String problem = problemTF.getText();
 			String solution = solutionTF.getText();
 			String consequence = consequencesTF.getText();
+			// context
+			String context = contextTF.getText();
+			String contextdefinition = contextdefTF.getText();
 			// nieuwe arraylist
 			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
+			
+			// context
+			Context c = new Context(consequence,consequence);
+			ArrayList<Context> contextArrayList = new ArrayList<Context>();
+			contextArrayList.add(c);
+			nieuwePattern.setContext(contextArrayList);
+			//
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns,null);
 			
