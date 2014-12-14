@@ -31,6 +31,8 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private String stringImage;
 	private ArrayList<Pattern> patterns;
 	private JList lister;
+	
+	private String imageName;
 	//Create a file chooser
 
 	public EditorFrame(ArrayList<Pattern> plist) {
@@ -109,6 +111,24 @@ public class EditorFrame extends JFrame implements ActionListener {
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns,null);
+			
+			/* Image bestand opslaan in map */
+			String filepadImage = "JsonObjects/diagrammen/"+ imageName;
+		
+			
+			 File outputfile = new File("saved.png");
+			  BufferedImage bi;
+			try {
+				bi = ImageIO.read(new File(filepad));
+				 ImageIO.write(bi, "png", outputfile);
+				 
+				 System.out.println();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   
+	
 		}
 		
 		if(event.getSource() == loadBTN){
@@ -141,6 +161,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 				System.out.println("filterPath:" + filterPath);
 				System.out.println("You chose " + filename);
 				filepad = filterPath + filename;
+				setImageName(filename);
 			try {
 				File sourceimage = new File(filepad);
 				image = ImageIO.read(sourceimage);
@@ -184,5 +205,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 	
 	public void  setStringImage(String s){
 		 stringImage = s;
+	}
+	
+	public void setImageName(String s){
+		imageName = s;
 	}
 }
