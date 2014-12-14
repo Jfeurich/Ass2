@@ -33,20 +33,19 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private ArrayList<Pattern> patterns;
 	private ArrayList<Context> context;
 	private JList lister;
-	
 	private String imageName;
-	//Create a file chooser
 
 	public EditorFrame(ArrayList<Pattern> plist) {
 		this.patterns = plist;
 		setLayout(new FlowLayout());
-		// save button
+
 		saveBTN = new JButton("Save"); add(saveBTN);
 		saveBTN.addActionListener(this);
 		loadBTN = new JButton("Load");add(loadBTN);
 		loadBTN.addActionListener(this);
 		JList lister = new JList(patterns.toArray());
-		// panels
+		add(lister);
+
 		contextPANEL = new JPanel();
 		add(contextPANEL);
 		
@@ -92,11 +91,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 		exportBTN = new JButton("Export Patterns"); add(exportBTN);
 		exportBTN.addActionListener(this);
 		
-		///////////////
 		plaatjeslabel = new JLabel("");
 		this.add(plaatjeslabel);
 		Image image = null;
-		//////////////
 		
 		setSize(400, 500);
 		setVisible(true);
@@ -112,7 +109,6 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String problem = problemTF.getText();
 			String solution = solutionTF.getText();
 			String consequence = consequencesTF.getText();
-			// context
 			String context = contextTF.getText();
 			String contextdefinition = contextdefTF.getText();
 			// nieuwe arraylist
@@ -120,7 +116,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
 			
 			// context
-			Context c = new Context(consequence,consequence);
+			Context c = new Context(context,contextdefinition);
 			ArrayList<Context> contextArrayList = new ArrayList<Context>();
 			contextArrayList.add(c);
 			nieuwePattern.setContext(contextArrayList);
@@ -150,9 +146,10 @@ public class EditorFrame extends JFrame implements ActionListener {
 		if(event.getSource() == loadBTN){
 			//haal het geselecteerde patroon op uit de arraylijst en vul de velden in
 			Pattern p = (Pattern) lister.getSelectedValue();
-			contextLAB.setText(p.getAllConsequences());
-			problemLAB.setText(p.getAllProblems());
-			
+			contextTF.setText(p.getAllConsequences());
+			problemTF.setText(p.getAllProblems());
+			solutionTF.setText(p.getSolution());
+			consequencesTF.setText(p.getAllConsequences());		
 		}
 		
 		if(event.getSource() == importBTN){
