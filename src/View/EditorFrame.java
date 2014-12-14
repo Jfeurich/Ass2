@@ -68,7 +68,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 		
 		// context definition
 		contextdefLAB = new JLabel("Context Definition"); contextPANEL.add(contextLAB);
-		contextdefTF = new JTextField(20); contextPANEL.add(contextTF);
+		contextdefTF = new JTextField(20); contextPANEL.add(contextdefTF);
 		
 		
 		problemLAB = new JLabel("Problem"); problemPANEL.add(problemLAB);
