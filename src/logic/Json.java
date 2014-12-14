@@ -42,11 +42,13 @@ public static ArrayList<Pattern> loadPattern(){
 	ArrayList<Pattern> patterns = new ArrayList<>();
 	
 	Gson gson = new Gson();
+	@SuppressWarnings("unused")
 	JsonElement element = gson.toJsonTree(patterns, new TypeToken<ArrayList<Pattern>>() {}.getType());
 	try {
 		BufferedReader br = new BufferedReader(new FileReader("JsonObjects/objects.json"));
 		JsonParser jsonParser = new JsonParser();
 		String json = gson.toJson(br);
+		@SuppressWarnings("unused")
 		JsonArray ja = (JsonArray) jsonParser.parse(json);
 		//j
 		//convert the json string back to object

@@ -21,11 +21,13 @@ public class Disk {
 	      ex.printStackTrace();
 	    }
 	}
+	@SuppressWarnings("unchecked")
 	public static ArrayList<Pattern> loadPattern(){
 		ArrayList<Pattern> patterns = new ArrayList<>();
 	
 		try {
 		FileInputStream fis = new FileInputStream("JsonObjects/objects.json");
+		@SuppressWarnings("resource")
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		try {
 			patterns =(ArrayList<Pattern>) ois.readObject();

@@ -1,7 +1,4 @@
 package Controller;
-import java.util.ArrayList;
-
-import Model.Pattern;
 
 public class PatternRepository implements Container {
 	   public String names[] = {"Robert" , "John" ,"Julie" , "Lora"};
