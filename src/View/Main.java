@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		ArrayList<Pattern> patterns = Disk.loadPattern();
 		EditorFrame EF = new EditorFrame(patterns);
-		SelectorFrame MF = new SelectorFrame(patterns);
+		//SelectorFrame MF = new SelectorFrame(patterns);
 		
 		PatternRepository patternRepository = new PatternRepository();
 		 for(Controller.Iterator iter = patternRepository.getIterator(); iter.hasNext();){

@@ -106,7 +106,6 @@ public class EditorFrame extends JFrame implements ActionListener {
 			// nieuwe arraylist
 			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
-			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns,null);
 		}
@@ -114,9 +113,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 		if(event.getSource() == loadBTN){
 			//haal het geselecteerde patroon op uit de arraylijst en vul de velden in
 			Pattern p = (Pattern) lister.getSelectedValue();
-			contextLAB.setText(p.getAllConsequences());
-			problemLAB.setText(p.getAllProblems());
-			plaatjeslabel.
+			contextLAB.setText(p.getConsequence());
+			problemLAB.setText(p.getProblem());
+			//plaatjeslabel.
 		}
 		
 		if(event.getSource() == importBTN){
