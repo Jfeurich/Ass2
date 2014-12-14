@@ -122,7 +122,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			nieuwePattern.setContext(contextArrayList);
 			//
 			patterns.add(nieuwePattern);
-			Disk.savePattern(patterns,null);
+			Disk.savePattern(patterns);
 			
 			/* Image bestand opslaan in map */
 			String filepadImage = "JsonObjects/diagrammen/"+ imageName;
@@ -209,11 +209,8 @@ public class EditorFrame extends JFrame implements ActionListener {
 		
 		
 		if(event.getSource() == exportBTN){
-			Disk.savePattern(patterns,"export");
-		}
-			
-			// call naar export.java
-		
+			Disk.savePattern(patterns);
+		}		
 	}
 	
 	public void  setStringImage(String s){

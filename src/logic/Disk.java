@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import Model.Pattern;
 
 public class Disk {
-	public static void savePattern(ArrayList<Pattern> p,String filename){
+	public static void savePattern(ArrayList<Pattern> p){
 	    try (
 	      FileOutputStream fos = new FileOutputStream("JsonObjects/objects.json");
 	      ObjectOutputStream oos = new ObjectOutputStream(fos);

@@ -1,8 +1,13 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Context{
+public class Context implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3517773272687672543L;
 	private String name;
 	private String description;
 	private ArrayList<Context> context = new ArrayList<Context>();
