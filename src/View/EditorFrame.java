@@ -33,7 +33,8 @@ public class EditorFrame extends JFrame implements ActionListener {
 	private JList lister;
 	//Create a file chooser
 
-	public EditorFrame(ArrayList<Pattern> patterns) {
+	public EditorFrame(ArrayList<Pattern> plist) {
+		this.patterns = plist;
 		setLayout(new FlowLayout());
 		// save button
 		saveBTN = new JButton("Save"); add(saveBTN);
@@ -106,7 +107,6 @@ public class EditorFrame extends JFrame implements ActionListener {
 			// nieuwe arraylist
 			/* Nieuwe constructor toevoegen aan pattern met String op de plaats van image */
 			Pattern nieuwePattern = new Pattern(problem,stringImage,solution,consequence);
-			ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns,null);
 		}
