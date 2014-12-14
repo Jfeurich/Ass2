@@ -22,7 +22,7 @@ import Model.Pattern;
 
 public class EditorFrame extends JFrame implements ActionListener {
 	private JTextField contextTF, problemTF, solutionTF, diagramTF, consequencesTF;
-	private JLabel contextLAB, problemLAB, solutionLAB, diagramLAB, consequencesLAB, plaatjeslabel;///
+	private JLabel contextLAB, problemLAB, solutionLAB, diagramLAB, consequencesLAB, plaatjeslabel;
 	private String filepath, filepad;///
 	private JButton uploadBTN;
 	private JButton saveBTN, importBTN, exportBTN;

@@ -15,25 +15,28 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JLabel categoryLAB, subCategoryLAB;
 	private JComboBox categoryList, purposeList, scopeList;
-	ArrayList<String> categoryString = new ArrayList<>();
-	ArrayList<String> purposeString = new ArrayList<>(); 
-	ArrayList<String> scopeString = new ArrayList<>();
+	private ArrayList<String> categoryString = new ArrayList<String>();
+	private ArrayList<String> subcategoryString = new ArrayList<String>();
+	private ArrayList<String> scopeString = new ArrayList<String>();
 	
-	public SelectorFrame(ArrayList<Pattern> p){
-		for(Pattern p1 : p){
-			categoryString.add("");
-			purposeString.add("");
-			scopeString.add("");
+	public SelectorFrame(ArrayList<Pattern> patterns){
+		for (Pattern p1 : patterns){
+			for (Context c : p1.getContext()){
+				c.getDescription();
+				c.getName();
+				categoryString.add("");
+				subcategoryString.add("");
+				scopeString.add("");
+			}
 		}
 		setLayout(new FlowLayout());
 		JPanel hulp1 = new JPanel();
 		add(hulp1);
 		
-		categoryLAB = new JLabel("Category");
+		categoryLAB = new JLabel("Categorytype");
 		hulp1.add(categoryLAB);
 		
-		categoryList = new JComboBox((ComboBoxModel) categoryString);
-		//categoryList.setSelectedIndex(1);
+		categoryList = new JComboBox(categoryString.toArray());
 		categoryList.addActionListener(this);
 		hulp1.add(categoryList);
 		
@@ -44,14 +47,12 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 		subCategoryLAB = new JLabel("subcategory");
 		hulp2.add(subCategoryLAB);
 		
-		purposeList = new JComboBox((ComboBoxModel) purposeString);
-		//purposeList.setSelectedIndex(1);
+		purposeList = new JComboBox(subcategoryString.toArray());
 		purposeList.addActionListener(this);
 		purposeList.setVisible(false);
 		hulp2.add(purposeList);
 		
-		scopeList = new JComboBox((ComboBoxModel) scopeString);
-		//scopeList.setSelectedIndex(2);
+		scopeList = new JComboBox(scopeString.toArray());
 		scopeList.addActionListener(this);
 		scopeList.setVisible(false);
 		hulp2.add(scopeList);

@@ -1,9 +1,11 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Context{
 	private String name;
 	private String description;
-	private Context context;
+	private ArrayList<Context> context = new ArrayList<Context>();
 
 	public Context( String desc){
 		description = desc;
@@ -26,11 +28,11 @@ public class Context{
 		this.name = name;
 	}
 
-	public Context getContext() {
+	public ArrayList<Context> getContext() {
 		return context;
 	}
 
-	public void setContext(Context context) {
+	public void setContext(ArrayList<Context> context) {
 		this.context = context;
 	}
 }
