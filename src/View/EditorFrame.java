@@ -18,6 +18,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import logic.Disk; // importeren export class
+import logic.Json;
 import Model.Context;
 import Model.Pattern;
 import java.io.InputStream;
@@ -124,6 +125,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			//
 			patterns.add(nieuwePattern);
 			Disk.savePattern(patterns);
+			Json.savePattern(patterns);
 			
 			/* Image bestand opslaan in map */
 			String filepadImage = "JsonObjects/diagrammen/"+ imageName;
@@ -239,10 +241,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 			}             
 			
 		}
-		
-		
 		if(event.getSource() == exportBTN){
 			Disk.savePattern(patterns);
+			Json.savePattern(patterns);
 		}		
 	}
 	

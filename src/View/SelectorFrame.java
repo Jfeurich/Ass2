@@ -17,16 +17,13 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 	private JComboBox categoryList, purposeList, scopeList;
 	private ArrayList<String> categoryString = new ArrayList<String>();
 	private ArrayList<String> subcategoryString = new ArrayList<String>();
-	private ArrayList<String> scopeString = new ArrayList<String>();
+	//private ArrayList<String> subsubcategoryString = new ArrayList<String>();
 	
 	public SelectorFrame(ArrayList<Pattern> patterns){
 		for (Pattern p1 : patterns){
 			for (Context c : p1.getContext()){
-				c.getDescription();
-				c.getName();
-				categoryString.add("");
-				subcategoryString.add("");
-				scopeString.add("");
+				categoryString.add(c.getDescription());
+				subcategoryString.add(c.getName());
 			}
 			
 		}

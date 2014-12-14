@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import Model.Pattern;
@@ -15,21 +16,14 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 public class Json {
-	public static void savePattern(ArrayList<Pattern> p,String filename){
-	String fn;
+	public static void savePattern(ArrayList<Pattern> p){
 	Gson gson = new Gson();
 	JsonElement element = gson.toJsonTree(p, new TypeToken<ArrayList<Pattern>>() {}.getType());
 	JsonArray jsonArray = element.getAsJsonArray();
 	String json = gson.toJson(jsonArray);
 	try {
 		//write converted json data to a file named "file.json"
-		if(filename != null){
-			fn = "JsonObjects/objects.json";
-		}
-		else{
-			fn = "JsonObjects/" + filename + ".json";
-		}
-		FileWriter writer = new FileWriter(fn);
+		FileWriter writer = new FileWriter("JsonObjects/jsonobjects.json");
 		writer.write(json);
 		writer.close();
 	} 
@@ -38,26 +32,21 @@ public class Json {
 	}
 }
 
-public static ArrayList<Pattern> loadPattern(){
-	ArrayList<Pattern> patterns = new ArrayList<>();
-	
-	Gson gson = new Gson();
-	@SuppressWarnings("unused")
-	JsonElement element = gson.toJsonTree(patterns, new TypeToken<ArrayList<Pattern>>() {}.getType());
-	try {
-		BufferedReader br = new BufferedReader(new FileReader("JsonObjects/objects.json"));
-		JsonParser jsonParser = new JsonParser();
-		String json = gson.toJson(br);
-		@SuppressWarnings("unused")
-		JsonArray ja = (JsonArray) jsonParser.parse(json);
-		//j
-		//convert the json string back to object
+	public static ArrayList<Pattern> loadPattern(){
+	    ArrayList<Pattern> patterns = new ArrayList<>();
+	    Gson gson = new Gson();
+	    JsonParser jsonParser = new JsonParser();
+	    try {
+	        BufferedReader br = new BufferedReader(new FileReader("JsonObjects/jsonobjects.json"));
+	        JsonElement jsonElement = jsonParser.parse(br);
 
-		//Pattern obj = gson.fromJson(br, Pattern.class);
-		//patterns.add(obj);
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-		return patterns;		
+	        //Create generic type
+	        Type type = new TypeToken<ArrayList<Pattern>>() {}.getType();
+	        return gson.fromJson(jsonElement, type);
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    return patterns;        
 	}
 }	
