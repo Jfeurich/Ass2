@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-
+import org.apache.commons.codec.binary.Base64;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -126,6 +126,18 @@ public class EditorFrame extends JFrame implements ActionListener {
 			this.setVisible(true);
 			this.repaint();
 			/////////////////
+			
+			// v2 //
+			
+			
+			BufferedImage img = ImageIO.read(new File(filepad));             
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(img, "jpg", baos);
+			baos.flush();
+			Base64 base = new Base64(false);
+			String encodedImage = base.encodeToString(baos.toByteArray());
+			baos.close();
+			encodedImage = java.net.URLEncoder.encode(encodedImage, "ISO-8859-1");
 		}
 		
 		
@@ -140,10 +152,6 @@ public class EditorFrame extends JFrame implements ActionListener {
 			patterns.add(nieuwePattern);
 			
 		
-			/*System.out.println("Ingevulde problem:" + problem);
-			for(Pattern p : patterns){
-				System.out.println(p);
-			}*/
 		}
 			
 			// call naar export.java
