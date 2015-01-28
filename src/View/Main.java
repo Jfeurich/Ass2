@@ -1,9 +1,7 @@
 	package View;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import logic.Disk;
-import logic.Json;
 import Model.Pattern;
 import Controller.PatternRepository;
 
