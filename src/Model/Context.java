@@ -24,6 +24,8 @@ public class Context implements Serializable{
 	public String getDescription(){
 		return description;
 	}
+
+	public void setDescription(String des){ this.description = des;}
 	
 	public String getName() {
 		return Patternname;
