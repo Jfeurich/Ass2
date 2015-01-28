@@ -13,7 +13,7 @@ public class Context implements Serializable {
 	private ArrayList<ContextCategory> context = new ArrayList<ContextCategory>();
 
 	public Context(String patternname) {
-		patternname = this.patternname;
+		this.patternname = patternname;
 	}
 
 
@@ -33,8 +33,8 @@ public class Context implements Serializable {
 		this.context = context;
 	}
 
-	public void addToContext(ContextCategory c) {
-		context.add(c);
+	public void addToContext(ContextCategory cc) {
+		context.add(cc);
 	}
 }
 

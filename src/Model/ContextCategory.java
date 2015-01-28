@@ -6,6 +6,12 @@ package Model;
 public class ContextCategory {
     private String description;
     private String categoryName;
+
+    public ContextCategory(String des, String catName){
+        this.description = des;
+        this.categoryName = catName;
+    }
+
     public String getCategoryName() {
         return categoryName;
     }

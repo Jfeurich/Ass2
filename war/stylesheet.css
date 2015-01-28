@@ -1,0 +1,17 @@
+body {
+    color:red;
+}
+
+.menu{
+    border-bottom:1px solid black;
+    text-align:center;
+}
+.menu a{
+    text-weight:bold;
+    color:darkblue;
+    text-decoration:none
+}
+
+.menu a:hover{
+    color:black;
+}

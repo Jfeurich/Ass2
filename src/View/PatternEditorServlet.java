@@ -6,4 +6,5 @@ package View;
 import javax.servlet.http.HttpServlet;
 
 public class PatternEditorServlet extends HttpServlet {
+
 }
