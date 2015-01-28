@@ -85,6 +85,12 @@ public class Pattern implements Serializable {
 	public void setAllProblems(ArrayList<String> allProblems) {
 		this.allProblems = allProblems;
 	}
-	
+	public ArrayList<String> getAllSolutions() {
+		return allSolutions;
+	}
+
+	public void setAllSolutions(ArrayList<String> allProblems) {
+		this.allSolutions = allSolutions;
+	}
 	////
 }
