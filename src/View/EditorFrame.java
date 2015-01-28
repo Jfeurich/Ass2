@@ -25,16 +25,16 @@ import java.io.InputStream;
 
 public class EditorFrame extends JFrame implements ActionListener {
 	private JTextField contextTF, contextdefTF, problemTF, solutionTF, diagramTF, consequencesTF;
+	private JList lister;
 	private JLabel contextLAB, contextdefLAB, problemLAB, solutionLAB, diagramLAB, consequencesLAB, plaatjeslabel;
-	private String filepath, filepad;///
-	private JButton uploadBTN;
-	private JButton saveBTN, loadBTN, importBTN, exportBTN;
-	private Image image;////
+	private JButton uploadBTN,saveBTN, loadBTN, importBTN, exportBTN;
 	private JPanel contextPANEL, problemPANEL,solutionPANEL, diagramPANEL, consequencePANEL;
+	private String filepath, filepad;///
+	private Image image;////
 	private String stringImage;
 	private ArrayList<Pattern> patterns;
 	private ArrayList<Context> context;
-	private JList lister;
+
 	private String imageName;
 
 	public EditorFrame(ArrayList<Pattern> plist) {
@@ -101,9 +101,9 @@ public class EditorFrame extends JFrame implements ActionListener {
 		 //Imagepadfile ophalen van Pattern
 		for(Pattern p  : patterns){
 			Image image3;
-			String s =p.getDiagram();
+			File file =p.getDiagram();
 			try {
-				image3 = ImageIO.read(new File(s));
+				image3 = ImageIO.read(file);
 				JLabel lab = new JLabel();
 				lab.setIcon(new ImageIcon(image3));
 				this.add(lab);
@@ -136,7 +136,7 @@ public class EditorFrame extends JFrame implements ActionListener {
 			String contextdefinition = contextdefTF.getText();
 			// nieuwe arraylist
 			String filepadImage = "JsonObjects/diagrammen/"+ imageName;
-			Pattern nieuwePattern = new Pattern(problem, filepadImage ,solution,consequence);
+			Pattern nieuwePattern = new Pattern(name);
 			System.out.println("Filepad:" + (nieuwePattern.getDiagram()));
 			// context toevoegen
 			Context c = new Context(context,contextdefinition);
