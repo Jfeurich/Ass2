@@ -20,13 +20,6 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 	//private ArrayList<String> subsubcategoryString = new ArrayList<String>();
 	
 	public SelectorFrame(ArrayList<Pattern> patterns){
-		for (Pattern p1 : patterns){
-			for (Context c : p1.getContext()){
-				categoryString.add(c.getDescription());
-				subcategoryString.add(c.getName());
-			}
-			
-		}
 		setLayout(new FlowLayout());
 		JPanel hulp1 = new JPanel();
 		add(hulp1);

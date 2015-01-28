@@ -21,13 +21,6 @@ public class Pattern implements Serializable {
 		name =nm;
 	}
 
-	public Pattern(String prob, String consequence){
-		problem = prob;
-
-		allConsequences = consequence;
-
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -83,5 +76,4 @@ public class Pattern implements Serializable {
 	public void setAllSolutions(ArrayList<String> allProblems) {
 		this.allSolutions = allSolutions;
 	}
-	////
 }
