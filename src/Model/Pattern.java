@@ -17,14 +17,13 @@ public class Pattern implements Serializable {
 	
 	private String problem;
 	
-	public Pattern(String nm, String sol){
+	public Pattern(String nm){
 		name =nm;
-		solution = sol;
 	}
 
-	public Pattern(String prob, String sol, String consequence){
+	public Pattern(String prob, String consequence){
 		problem = prob;
-		solution = sol;
+
 		allConsequences = consequence;
 
 	}
