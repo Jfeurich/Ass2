@@ -1,6 +1,7 @@
 package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.File;
 
 public class Pattern implements Serializable {
 	/**
@@ -10,8 +11,8 @@ public class Pattern implements Serializable {
 	private String name, solution;
 	private String allConsequences;
 	private ArrayList<Context> context = new ArrayList<Context>();
-	private String allProblems;
-	private String diagram; 
+	private ArrayList<String> allProblems;
+	private File diagram; 
 	
 	private String problem;
 	
@@ -20,10 +21,11 @@ public class Pattern implements Serializable {
 		solution = sol;
 	}
 
-	public Pattern(String prob, String img, String sol, String consequence){
+	public Pattern(String prob, String sol, String consequence){
 		problem = prob;
 		solution = sol;
-		diagram = img;
+		allConsequences = consequence;
+
 	}
 	
 	public String getSolution() {

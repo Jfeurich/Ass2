@@ -50,7 +50,7 @@ public class SelectorFrame extends MyFrame implements ActionListener{
 		purposeList.setVisible(false);
 		hulp2.add(purposeList);
 		
-		scopeList = new JComboBox(scopeString.toArray());
+		//scopeList = new JComboBox(scopeString.toArray());
 		scopeList.addActionListener(this);
 		scopeList.setVisible(false);
 		hulp2.add(scopeList);

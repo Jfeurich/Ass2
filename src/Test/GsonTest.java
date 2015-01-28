@@ -16,9 +16,7 @@ public class GsonTest {
 	
 		public void write() throws IOException{
 			File file = new File("C:/Users/Elvira/Documents/Output.json");
-			try (
-					
-					Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8")){		
+			try(Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8")){
 			Gson gson = new GsonBuilder().create();
 			gson.toJson("Facade Pattern", writer);
 			gson.toJson("Behavioural", writer);
