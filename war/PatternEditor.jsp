@@ -1,3 +1,4 @@
+<%@ page import="Model.Pattern" %>
 <form action="PatternEditor.do" method="post">
     <table>
         <tr>
