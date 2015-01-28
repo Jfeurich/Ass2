@@ -13,9 +13,7 @@ public class Pattern implements Serializable {
 	private Context context;
 	private ArrayList<String> allProblems;
 	private ArrayList<String> allSolutions;
-	private File diagram; 
-	
-	private String problem;
+	private File diagram;
 	
 	public Pattern(String nm){
 		name =nm;
@@ -35,15 +33,6 @@ public class Pattern implements Serializable {
 	
 	public void setDiagram(File dia){
 		this.diagram = dia;
-	}
-	
-	public String getProblem(){
-		return problem;
-	}
-	
-	public String toString(){
-		String s = "Pattern:" + getProblem() ;
-		return s;
 	}
 
 	public Context getContext() {

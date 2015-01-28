@@ -8,7 +8,7 @@ public class Context implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -3517773272687672543L;
-	private String name;
+	private String Patternname;
 	private String description;
 	private ArrayList<Context> context = new ArrayList<Context>();
 
@@ -17,7 +17,7 @@ public class Context implements Serializable{
 	}
 	
 	public Context(String desc,String name){
-		name = this.name;
+		name = this.Patternname;
 		desc = this.description;
 	}
 
@@ -26,11 +26,11 @@ public class Context implements Serializable{
 	}
 	
 	public String getName() {
-		return name;
+		return Patternname;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.Patternname = name;
 	}
 
 	public ArrayList<Context> getContext() {
@@ -39,5 +39,9 @@ public class Context implements Serializable{
 
 	public void setContext(ArrayList<Context> context) {
 		this.context = context;
+	}
+
+	public void addToContext(Context c){
+		context.add(c);
 	}
 }
