@@ -1,9 +1,9 @@
 package Controller;
 
 public class PatternBuilderFactory {
-    private static PatternBuilderFactory instance = new PatternBuilderFactory();
+    private static PatternBuilder instance = new PatternBuilder();
     private PatternBuilderFactory(){};
-    public static PatternBuilderFactory getInstance(){
+    public static PatternBuilder getInstance(){
         return instance;
     }
 }

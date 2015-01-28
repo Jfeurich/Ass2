@@ -7,9 +7,9 @@ package Controller;
 import Model.Context;
 
 public class ContextBuilderFactory {
-    private static ContextBuilderFactory instance = new ContextBuilderFactory();
+    private static ContextBuilder instance = new ContextBuilder();
 
     private ContextBuilderFactory(){};
 
-    public static ContextBuilderFactory getInstance(){ return instance;}
+    public static ContextBuilder getInstance(){ return instance;}
 }
