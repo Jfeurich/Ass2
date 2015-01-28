@@ -8,9 +8,9 @@ public class Pattern implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2262846250404779815L;
-	private String name, solution;
+	private String name;
 	private String allConsequences;
-	private ArrayList<Context> context = new ArrayList<Context>();
+	private Context context;
 	private ArrayList<String> allProblems;
 	private ArrayList<String> allSolutions;
 	private File diagram; 
@@ -27,14 +27,6 @@ public class Pattern implements Serializable {
 		solution = sol;
 		allConsequences = consequence;
 
-	}
-	
-	public String getSolution() {
-		return solution;
-	}
-
-	public void setSolution(String solution) {
-		this.solution = solution;
 	}
 
 	public String getName() {
@@ -62,11 +54,11 @@ public class Pattern implements Serializable {
 		return s;
 	}
 
-	public ArrayList<Context> getContext() {
+	public Context getContext() {
 		return context;
 	}
 
-	public void setContext(ArrayList<Context> context) {
+	public void setContext(Context context) {
 		this.context = context;
 	}
 
