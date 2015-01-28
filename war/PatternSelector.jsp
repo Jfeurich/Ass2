@@ -8,7 +8,7 @@
 </jsp:include>
 
         <%
-            Pattern pattern = new Pattern("Patternname");
+            Pattern pattern = new Pattern("Patternname2");
             Context context = new Context(pattern.getName());
 
             ContextCategory cc = new ContextCategory("Scope","Behavioural");
