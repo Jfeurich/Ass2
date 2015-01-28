@@ -1,5 +1,6 @@
 package Controller;
 import Model.Context;
+import Model.ContextCategory;
 
 import java.util.ArrayList;
 
@@ -8,14 +9,13 @@ import java.util.ArrayList;
  */
 public class ContextBuilder {
     private Context context;
-    private ArrayList<Context> contextArray = new ArrayList<Context>();
+    private ArrayList<ContextCategory> contextArray = new ArrayList<ContextCategory>();
     public Context makeContext(String desc,String name){
-        Context contextS= new Context(desc,name);
+        Context contextS= new Context(name);
         return context;
     }
 
-    public void setDescription(String des){ context.setDescription(des);}
     public void setName (String name){context.setName(name);}
-    public void setContext(ArrayList<Context> context) { this.contextArray = context; }
+    public void setContextCategory(ArrayList<ContextCategory> context) { this.contextArray = context; }
 
 }

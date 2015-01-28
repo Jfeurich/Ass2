@@ -3,47 +3,38 @@ package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Context implements Serializable{
+public class Context implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -3517773272687672543L;
-	private String Patternname;
-	private String description;
-	private ArrayList<Context> context = new ArrayList<Context>();
+	private String patternname;
 
-	public Context( String desc){
-		description = desc;
-	}
-	
-	public Context(String desc,String name){
-		name = this.Patternname;
-		desc = this.description;
+	private ArrayList<ContextCategory> context = new ArrayList<ContextCategory>();
+
+	public Context(String patternname) {
+		patternname = this.patternname;
 	}
 
-	public String getDescription(){
-		return description;
-	}
 
-	public void setDescription(String des){ this.description = des;}
-	
 	public String getName() {
-		return Patternname;
+		return patternname;
 	}
 
 	public void setName(String name) {
-		this.Patternname = name;
+		this.patternname = name;
 	}
 
-	public ArrayList<Context> getContext() {
+	public ArrayList<ContextCategory> getContextCategory() {
 		return context;
 	}
 
-	public void setContext(ArrayList<Context> context) {
+	public void setContext(ArrayList<ContextCategory> context) {
 		this.context = context;
 	}
 
-	public void addToContext(Context c){
+	public void addToContext(ContextCategory c) {
 		context.add(c);
 	}
 }
+
