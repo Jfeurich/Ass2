@@ -77,19 +77,15 @@
                 x++; //text box increment
                 $(wrapper).append('<div><input type="text" name="mytext'+x+'"> <input type="text" name="subcat'+x+'"/> <a href="#" class="remove_field"><img src="minicon.png" class="mini_icon"></a></div>'); //add input box
             }
+            var input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", "totalTextfields");
+            input.setAttribute("value", x);
         });
 
         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').remove(); x--;
         })
-
-        var input = document.createElement("input");
-
-        input.setAttribute("type", "hidden");
-
-        input.setAttribute("name", "totalTextfields");
-
-        input.setAttribute("value", x);
     })
     ;
 </script>
@@ -133,17 +129,17 @@
         <!-- file upload -->
         <input type="file" id="file" onchange="startRead()" name="files[]" multiple />
         <!-- einde fileupload -->
-        <input type="submit" name="save" value="Add new pattern" class="button"></div>
+        <input type="submit" name="button" value="Add new pattern" class="button"></div>
     </div>
     </form>
     <br/>
     <br/>
 
     <div class="import">
-    <input type="submit" value="Import  patterns" class="buttonimportexport">
+    <input type="submit" name="button" value="Import  patterns" class="buttonimportexport">
     </div>
     <div class="export">
-        <input type="submit" value="Export  pattern" class="buttonimportexport alignright">
+        <input type="submit" name="button" value="Export  pattern" class="buttonimportexport alignright">
     </div>
 </body>
 </html>
