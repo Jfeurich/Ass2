@@ -14,13 +14,4 @@
         <servlet-name>PatternSelectorServlet</servlet-name>
         <url-pattern>/PatternSelectorServlet.do</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>FileUploadHandler</servlet-name>
-        <servlet-class>View.FileUploadHandler</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FileUploadHandler</servlet-name>
-        <url-pattern>/upload</url-pattern>
-    </servlet-mapping>
 </web-app>
