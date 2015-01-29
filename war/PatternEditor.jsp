@@ -47,6 +47,7 @@
                 alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
             }
         }
+        // wohoo
         evt.stopPropagation();
         evt.preventDefault();
     }

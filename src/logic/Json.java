@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class Json implements IOInterface {
+public class Json  {
 	public void savePattern(ArrayList<Pattern> p){
 	Gson gson = new Gson();
 	JsonElement element = gson.toJsonTree(p, new TypeToken<ArrayList<Pattern>>() {}.getType());
