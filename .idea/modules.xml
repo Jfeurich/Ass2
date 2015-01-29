@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/Ass2.iml" filepath="$PROJECT_DIR$/src/Ass2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JsonObjects/JsonObjects.iml" filepath="$PROJECT_DIR$/JsonObjects/JsonObjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/war/war.iml" filepath="$PROJECT_DIR$/war/war.iml" />
+    </modules>
+  </component>
+</project>
