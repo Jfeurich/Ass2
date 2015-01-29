@@ -24,7 +24,8 @@
         <url-pattern>/PatternEditorServlet.do</url-pattern>
     </servlet-mapping>
     <context-param>
-        <param-name>tempfile.dir</param-name>
-        <param-value>tmpfiles</param-value>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>/Volumes/JetDrive/apache-tomcat-8.0.17/images/</param-value>
     </context-param>
 </web-app>

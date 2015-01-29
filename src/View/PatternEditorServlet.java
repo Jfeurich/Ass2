@@ -30,9 +30,9 @@ public class PatternEditorServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+        RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         boolean finished = false;
         String button = req.getParameter("button");
-        RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         String p = req.getParameter("pattern");
         ArrayList<Pattern> patterns = Disk.loadPattern();
         Pattern pattern = null;
@@ -52,14 +52,15 @@ public class PatternEditorServlet extends HttpServlet {
             PatternBuilder pb = PatternBuilderFactory.getInstance();
             ContextBuilder cb = ContextBuilderFactory.getInstance();
             pattern = pb.makePattern(name);
-            Context context = cb.makeContext("description",pb.getPatternName());
+            Context context = cb.makeContext("description",name);
             // Save image as file
+
             String fileName = req.getParameter("fileName");
             File file = new File(req.getServletContext().getAttribute("file")+File.separator+fileName);
             if(!file.exists()){
-                throw new ServletException("File doesn't exists on server.");
+                throw new ServletException("File doesn't exist on server.");
             }
-            System.out.println("File location on server::"+file.getAbsolutePath());
+            //System.out.println("File location on server::"+file.getAbsolutePath());
             ServletContext ctx = getServletContext();
             InputStream fis = new FileInputStream(file);
             String mimeType = ctx.getMimeType(file.getAbsolutePath());
@@ -108,7 +109,7 @@ public class PatternEditorServlet extends HttpServlet {
             rd = req.getRequestDispatcher("PatternEditorSave.jsp");
         }
         else if(button.equals("cancel")){
-            rd = req.getRequestDispatcher("PatternSelector.jsp");
+            rd = req.getRequestDispatcher("PatternEditorSave.jsp");
         }
         rd.forward(req, resp);
     }

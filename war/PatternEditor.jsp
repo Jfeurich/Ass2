@@ -1,3 +1,9 @@
+<%@ page import="java.io.*,java.util.*, javax.servlet.*" %>
+<%@ page import="javax.servlet.http.*" %>
+<%@ page import="org.apache.commons.fileupload.*" %>
+<%@ page import="org.apache.commons.fileupload.disk.*" %>
+<%@ page import="org.apache.commons.fileupload.servlet.*" %>
+<%@ page import="org.apache.commons.io.output.*" %>
 <jsp:include page="Header.jsp" >
     <jsp:param name="titel" value="Accountgegevens wijzigen" />
 </jsp:include>
@@ -125,7 +131,7 @@
     </div>
     <div class="patterninfo">
         <!-- file upload -->
-        <input type="file" id="file" onchange="startRead()" name="files[]" multiple />
+        <input type="file" name="file" id="file" onchange="startRead()" name="files[]" multiple />
         <!-- einde fileupload -->
         <input type="submit" name="button" value="Add new pattern" class="button"></div>
     </div>
