@@ -41,21 +41,13 @@
 
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext'+x+'"> <input type="text" name="subcat'+x+'"/> <a href="#" class="remove_field"><img src="minicon.png" style="width:20px"></a></div>'); //add input box
+                $(wrapper).append('<div><input type="text" name="mytext'+x+'"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
             }
         });
 
         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').remove(); x--;
         })
-
-        var input = document.createElement("input");
-
-        input.setAttribute("type", "hidden");
-
-        input.setAttribute("name", "totalTextfields");
-
-        input.setAttribute("value", x);
     })
     ;
 
@@ -64,38 +56,39 @@
 
 <body>
 
-    <h1>Pattern Editor</h1>
-    <div class="patterninfo">
-            <label>Pattern name</label></br>
-        <div class="labelinfo">
-            <input type="text" name="patternname">
-        </div>
-
-        </br><label>Problem</label></br>
-        <div class="labelinfo">
-            <input type="text" name="patternproblem">
-        </div>
-
-        </br><label>Solution</label></br>
-        <div class="labelinfo">
-            <textarea name="patternproblem"></textarea>
-        </div>
-    <div class="patterninfo2">
-        <div class="input_fields_wrap">
-            </br><label>Category</label> <label style="margin-left:70px">Subcategory</label></br>
-            <div><input type="text" name="mytext[]"> <input type="text" name="subcat[]">  <img src="plusicon2.png" style="width:30px" class="add_field_button"></br></div>
-        </div>
-        <br/>
+<h1>Pattern Editor</h1>
+<div class="patterninfo">
+    <label>Pattern name</label></br>
+    <div class="labelinfo">
+        <input type="text" name="patternname">
     </div>
-    <div class="patterninfo">
-        <!-- file upload -->
-        <input type="file" id="file" onchange="startRead()" name="files[]" multiple />
-        <!-- einde fileupload -->
 
-        <input type="submit" value="Add new Pattern" class="button">
+    </br><label>Problem</label></br>
+    <div class="labelinfo">
+        <input type="text" name="patternproblem">
+    </div>
+
+    </br><label>Solution</label></br>
+    <div class="labelinfo">
+        <textarea name="patternproblem"></textarea>
+    </div>
+
+    <div class="input_fields_wrap">
+        </br><label>Category</label></br>
+        <!--<button class="add_field_button">Add More Fields</button>-->
+        <div><input type="text" name="mytext[]">  <img src="plusicon2.png" style="width:30px" class="add_field_button"></br></div>
     </div>
     <br/>
-    <br/>
+
+
+    <!-- file upload -->
+    <input type="file" id="file" onchange="startRead()" name="files[]" multiple />
+    <!-- einde fileupload -->
+
+    <input type="submit" value="Add new Pattern" class="button">
+</div>
+<br/>
+<br/>
 
 
 
