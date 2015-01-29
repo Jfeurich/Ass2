@@ -17,11 +17,11 @@
     if (window.File && window.FileReader && window.FileList && window.Blob) {
         alert("File API supported.!");
     } else {
-        alert(‘The File APIs are not fully supported in this browser.’);
+        alert("The File APIs are not fully supported in this browser.");
     }
 
     function startRead(evt) {
-        var file = document.getElementById(‘file‘).files[0];
+        var file = document.getElementById('file').files[0];
         if (file) {
             //  getAsText(file);
             alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
@@ -60,12 +60,12 @@
     <div class="patterninfo">
             <label>Pattern name</label></br>
         <div class="labelinfo">
-            <input type="text" name="patternname"></input>
+            <input type="text" name="patternname">
         </div>
 
         </br><label>Problem</label></br>
         <div class="labelinfo">
-            <input type="text" name="patternproblem"></input>
+            <input type="text" name="patternproblem">
         </div>
 
         </br><label>Solution</label></br>

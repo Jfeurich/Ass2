@@ -12,6 +12,7 @@ import Model.Pattern;
 import logic.Disk;
 
 import javax.servlet.http.HttpServlet;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -28,6 +29,7 @@ public class PatternEditorServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+        boolean finished = false;
         String button = req.getParameter("button");
         RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         String p = req.getParameter("pattern");
@@ -45,6 +47,9 @@ public class PatternEditorServlet extends HttpServlet {
             ContextBuilder cb = ContextBuilderFactory.getInstance();
             pattern = pb.makePattern("");
             Context context = cb.makeContext("description",pb.getPatternName());
+            // Haal de waarden op uit de JSP
+            String consequences = req.getParameter("consequences");
+            File diagram = req.get
             pb.addContext();
             pb.addDiagram();
             pb.setAllSolutions();
@@ -55,14 +60,18 @@ public class PatternEditorServlet extends HttpServlet {
                 if(patty.getName().equals(pattern.getName())){
                     patterns.remove(patty);
                     patterns.add(pattern);
+                    finished = true;
+
                 }
                 //voeg object toe aan de arraylist
                 else{
                     patterns.add(pattern);
+                    finished = true;
                 }
             }
             //Sla de ArrayList weer op
             Disk.savePattern(patterns);
+            rd = req.getRequestDispatcher("PatternViewer.jsp");
         }
         else if(button.equals("cancel")){
             rd = req.getRequestDispatcher("PatternSelector.jsp");

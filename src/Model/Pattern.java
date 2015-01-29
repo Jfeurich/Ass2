@@ -11,8 +11,8 @@ public class Pattern implements Serializable {
 	private String name;
 	private String allConsequences;
 	private Context context;
-	private ArrayList<String> allProblems;
-	private ArrayList<String> allSolutions;
+	private String allProblems;
+	private String allSolutions;
 	private File diagram;
 	
 	public Pattern(String nm){
@@ -51,18 +51,20 @@ public class Pattern implements Serializable {
 		this.allConsequences = allConsequences;
 	}
 
-	public ArrayList<String> getAllProblems() {
+	public String getAllProblems() {
 		return allProblems;
 	}
 
-	public void setAllProblems(ArrayList<String> allProblems) {
+	public void setAllProblems(String allProblems) {
 		this.allProblems = allProblems;
 	}
-	public ArrayList<String> getAllSolutions() {
+
+	public String getAllSolutions() {
 		return allSolutions;
 	}
 
-	public void setAllSolutions(ArrayList<String> allProblems) {
+	public void setAllSolutions(String allSolutions){
 		this.allSolutions = allSolutions;
 	}
+
 }
