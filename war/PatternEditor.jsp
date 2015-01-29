@@ -77,15 +77,13 @@
                 x++; //text box increment
                 $(wrapper).append('<div><input type="text" name="mytext'+x+'"> <input type="text" name="subcat'+x+'"/> <a href="#" class="remove_field"><img src="minicon.png" class="mini_icon"></a></div>'); //add input box
             }
-            var input = document.createElement("input");
-            input.setAttribute("type", "hidden");
-            input.setAttribute("name", "totalTextfields");
-            input.setAttribute("value", x);
+
         });
 
         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').remove(); x--;
         })
+        $(wrapper).append('<input type="hidden" name="totalTextfields" value="'+x+'" />');
     })
     ;
 </script>
