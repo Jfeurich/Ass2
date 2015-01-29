@@ -39,6 +39,12 @@
 <body>
 </br></br>
 <h1>Pattern Selector</h1>
-<div class="patterninfo"></div>
+<div class="patterninfo">
+    Select Category
+    <select name="sometext" size="5">
+        <option>Category1</option>
+        <option>Category2</option>
+    </select>
+</div>
 </body>
 </html>

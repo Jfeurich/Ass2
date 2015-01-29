@@ -30,6 +30,7 @@
 
     <label>Solution</label>
     <--! ophalen van solution -->
+
     <label>Diagram</label>
     <--! ophalen van diagram -->
 
