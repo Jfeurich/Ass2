@@ -58,12 +58,12 @@ public class PatternEditorServlet extends HttpServlet {
             ContextBuilder cb = ContextBuilderFactory.getInstance();
             pattern = pb.makePattern(name);
             Context context = cb.makeContext("description",pb.getPatternName());
-            Part filePart = req.getPart("file");
-            String filename = filePart.getSubmittedFileName();
-            InputStream fileContent = filePart.getInputStream();
             // TODO: find method to save file
-//            File file = new File(fileContent,filename);
-            // TODO: save context categories in context
+
+            File file = new File("/JsonObjects/diagrammen/");
+
+
+            // save context categories in context
             for (int i = 0;i<totaltf;i++ ){
                 String desc = req.getParameter("mytext"+Integer.toString(i));
                 String catnam = req.getParameter("subcat"+Integer.toString(i));
