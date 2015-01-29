@@ -27,11 +27,11 @@ public class PatternBuilder {
 		pattern.setAllConsequences(s);
 	}
 
-	public void setProblems(ArrayList<String> problems){
+	public void setProblems(String problems){
 		pattern.setAllProblems(problems);
 	}
 
-	public void setAllSolutions(ArrayList<String> solutions){
+	public void setAllSolutions(String solutions){
 		pattern.setAllSolutions(solutions);
 	}
 

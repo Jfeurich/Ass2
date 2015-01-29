@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import Model.Pattern;
 
-public class Disk {
+public class Disk{
 	public static void savePattern(ArrayList<Pattern> p){
 	    try (
 	      FileOutputStream fos = new FileOutputStream("JsonObjects/objects.json");
@@ -21,13 +21,13 @@ public class Disk {
 	      ex.printStackTrace();
 	    }
 	}
-	@SuppressWarnings("unchecked")
+
 	public static ArrayList<Pattern> loadPattern(){
 		ArrayList<Pattern> patterns = new ArrayList<>();
 	
 		try {
 		FileInputStream fis = new FileInputStream("JsonObjects/objects.json");
-		@SuppressWarnings("resource")
+
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		try {
 			patterns =(ArrayList<Pattern>) ois.readObject();

@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class Json {
-	public static void savePattern(ArrayList<Pattern> p){
+public class Json implements IOInterface {
+	public void savePattern(ArrayList<Pattern> p){
 	Gson gson = new Gson();
 	JsonElement element = gson.toJsonTree(p, new TypeToken<ArrayList<Pattern>>() {}.getType());
 	JsonArray jsonArray = element.getAsJsonArray();
@@ -31,7 +31,7 @@ public class Json {
 	}
 }
 
-	public static ArrayList<Pattern> loadPattern(){
+	public ArrayList<Pattern> loadPattern(){
 	    ArrayList<Pattern> patterns = new ArrayList<>();
 	    Gson gson = new Gson();
 	    JsonParser jsonParser = new JsonParser();

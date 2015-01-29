@@ -8,17 +8,22 @@ import Controller.ContextBuilderFactory;
 import Controller.PatternBuilder;
 import Controller.PatternBuilderFactory;
 import Model.Context;
+import Model.ContextCategory;
 import Model.Pattern;
 import logic.Disk;
 
 import javax.servlet.http.HttpServlet;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import static jdk.nashorn.internal.runtime.ECMAException.getFileName;
 
 public class PatternEditorServlet extends HttpServlet {
 
@@ -42,19 +47,35 @@ public class PatternEditorServlet extends HttpServlet {
         }
 
         if(button.equals("save")){
-            //als het pattern opgeslagen moet worden dan
+            // Get the patterns from the JSP
+            String consequences = req.getParameter("consequences");
+            String name = req.getParameter("name");
+            String allProblems = req.getParameter("problems");
+            String allSolutions = req.getParameter("solutions");
+            int totaltf = Integer.parseInt(req.getParameter("totalTextfields"));
+            // Start saving the patterns
             PatternBuilder pb = PatternBuilderFactory.getInstance();
             ContextBuilder cb = ContextBuilderFactory.getInstance();
-            pattern = pb.makePattern("");
+            pattern = pb.makePattern(name);
             Context context = cb.makeContext("description",pb.getPatternName());
-            // Haal de waarden op uit de JSP
-            String consequences = req.getParameter("consequences");
-            File diagram = req.get
-            pb.addContext();
-            pb.addDiagram();
-            pb.setAllSolutions();
-            pb.setConsequences();
-            pb.setProblems();
+            Part filePart = req.getPart("file");
+            String filename = filePart.getSubmittedFileName();
+            InputStream fileContent = filePart.getInputStream();
+            // TODO: find method to save file
+//            File file = new File(fileContent,filename);
+            // TODO: save context categories in context
+            for (int i = 0;i<totaltf;i++ ){
+                String desc = req.getParameter("mytext"+Integer.toString(i));
+                String catnam = req.getParameter("subcat"+Integer.toString(i));
+                ContextCategory cc = new ContextCategory(desc,catnam);
+                cb.addContextCategory(cc);
+            }
+            pb.addContext(context);
+            //TODO: Add file to patterns
+//            pb.addDiagram(file);
+            pb.setAllSolutions(allSolutions);
+            pb.setConsequences(consequences);
+            pb.setProblems(allProblems);
             for(Pattern patty : patterns){
                 //kijk of object al in de arraylist zit zo ja vervang object
                 if(patty.getName().equals(pattern.getName())){

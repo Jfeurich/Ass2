@@ -17,13 +17,14 @@ public class ContextBuilder {
     public Context getContext(){
         return this.context;
     }
-    public void setContext(Context c){ this.context = c;}
-
+    public void setContext(Context c){
+        this.context = c;
+    }
     public void setName (String name){
         context.setName(name);
     }
     public void setContextCategory(ArrayList<ContextCategory> context) {
         this.contextArray = context;
     }
-
+    public void addContextCategory(ContextCategory cc){context.addToContext(cc);}
 }
