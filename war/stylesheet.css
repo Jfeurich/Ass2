@@ -48,11 +48,14 @@ h1{
     margin-left:auto;
     margin-right:auto;
     width:300px;
+
 }
 .patterninfo2 {
     margin-left:auto;
     margin-right:auto;
-    width:400px;
+    width:320px;
+
+    padding-left:30px;
 }
 .labelinfo{
     box-shadow: 2px 2px 2px #002545;
@@ -65,10 +68,13 @@ h1{
 }
 
 .labelinfo input[type="text"]{ width:280px;  }
-.labelinfo input[type="textarea"]{ width:280px;}
+.labelinfo textarea{ width:280px;}
+
+#subtypeLabel{  margin-left:70px  }
 
 .button{
     border:0px;
+    margin-top:10px;
     background:white;
     color:black;
     text-align:center;
@@ -99,4 +105,17 @@ h1{
     overflow:auto;
     background-color:rgba(221,214,221,0.3);
     border:1px dashed black;
+}
+
+.mini_icon{
+    margin-left:15px;
+    width:20px;
+    margin-top:12px;
+    position:absolute;
+}
+
+.note{
+    color:#065396;
+    font-size:9pt;
+    font-style:italic;
 }

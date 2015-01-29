@@ -15,16 +15,16 @@
 <!-- upload script -->
 <script>
     if (window.File && window.FileReader && window.FileList && window.Blob) {
-        alert("File API supported.!");
+       // alert("File API supported.!");
     } else {
-        alert("The File APIs are not fully supported in this browser.");
+        //alert("The File APIs are not fully supported in this browser.");
     }
 
     function startRead(evt) {
         var file = document.getElementById('file').files[0];
         if (file) {
             //  getAsText(file);
-            alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
+           // alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
         }
     }
 </script>
@@ -41,7 +41,7 @@
 
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext'+x+'"> <input type="text" name="subcat'+x+'"/> <a href="#" class="remove_field"><img src="minicon.png" style="width:20px"></a></div>'); //add input box
+                $(wrapper).append('<div><input type="text" name="mytext'+x+'"> <input type="text" name="subcat'+x+'"/> <a href="#" class="remove_field"><img src="minicon.png" class="mini_icon"></a></div>'); //add input box
             }
         });
 
@@ -58,7 +58,6 @@
         input.setAttribute("value", x);
     })
     ;
-
 </script>
 
 
@@ -68,21 +67,28 @@
     <div class="patterninfo">
             <label>Pattern name</label></br>
         <div class="labelinfo">
-            <input type="text" name="patternname">
+            <input type="text" name="name">
         </div>
 
         </br><label>Problem</label></br>
         <div class="labelinfo">
-            <input type="text" name="patternproblem">
+            <input type="text" name="problems">
+        </div>
+
+        </br><label>Consequences</label></br>
+        <div class="labelinfo">
+            <textarea name="consequences"></textarea><br/>
+            <span class="note">Please separate the consequences with a semi-colon (;) </span>
         </div>
 
         </br><label>Solution</label></br>
         <div class="labelinfo">
-            <textarea name="patternproblem"></textarea>
+            <textarea name="solutions"></textarea>
         </div>
+    </div>
     <div class="patterninfo2">
         <div class="input_fields_wrap">
-            </br><label>Category</label> <label style="margin-left:70px">Subcategory</label></br>
+            </br><label>Category</label> <label id="subtypeLabel">Subtype</label></br>
             <div><input type="text" name="mytext[]"> <input type="text" name="subcat[]">  <img src="plusicon2.png" style="width:30px" class="add_field_button"></br></div>
         </div>
         <br/>
@@ -91,13 +97,9 @@
         <!-- file upload -->
         <input type="file" id="file" onchange="startRead()" name="files[]" multiple />
         <!-- einde fileupload -->
-
         <input type="submit" value="Add new Pattern" class="button">
     </div>
     <br/>
     <br/>
-
-
-
 </body>
 </html>
