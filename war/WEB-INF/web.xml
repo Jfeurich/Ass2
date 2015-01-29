@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<!DOCTYPE web-app
-        PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd">
-
-<web-app>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
     <servlet>
         <servlet-name>PatternSelectorServlet</servlet-name>
         <servlet-class>View.PatternSelectorServlet</servlet-class>
@@ -13,6 +13,15 @@
     <servlet-mapping>
         <servlet-name>PatternSelectorServlet</servlet-name>
         <url-pattern>/PatternSelectorServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PatternEditorServlet</servlet-name>
+        <servlet-class>View.PatternEditorServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PatternEditorServlet</servlet-name>
+        <url-pattern>/PatternEditorServlet.do</url-pattern>
     </servlet-mapping>
     <context-param>
         <param-name>tempfile.dir</param-name>

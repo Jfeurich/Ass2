@@ -98,7 +98,7 @@
 <body>
 </br></br>
     <h1>Pattern Editor</h1>
-<form action="PatternEditorSave.jsp" method="POST" target="_blank">
+<form action="PatternEditorServlet.do" method="POST" target="_blank">
 
     <div class="patterninfo">
             <label>Pattern name</label></br>
@@ -125,7 +125,7 @@
     <div class="patterninfo2">
         <div class="input_fields_wrap">
             </br><label>Category</label> <label id="subtypeLabel">Subtype</label></br>
-            <div><input type="text" name="mytext[]"> <input type="text" name="subcat[]">  <img src="plusicon2.png" style="width:30px" class="add_field_button"></br></div>
+            <div><input type="text" name="mytext[]"> <input type="text" name="subcat[]">  <img src="plusicon2.png" style="width:30px" class="add_field_button"><br/></div>
         </div>
         <br/>
     </div>

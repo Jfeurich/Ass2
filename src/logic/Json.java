@@ -32,7 +32,7 @@ public class Json  {
 }
 
 	public ArrayList<Pattern> loadPattern(){
-	    ArrayList<Pattern> patterns = new ArrayList<>();
+	    ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 	    Gson gson = new Gson();
 	    JsonParser jsonParser = new JsonParser();
 	    try {

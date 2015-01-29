@@ -10,12 +10,11 @@ import Model.Pattern;
 
 public class Disk{
 	public static void savePattern(ArrayList<Pattern> p){
-	    try (
-	      FileOutputStream fos = new FileOutputStream("JsonObjects/objects.json");
-	      ObjectOutputStream oos = new ObjectOutputStream(fos);
-	    ){
-	      oos.writeObject(p);
-	      oos.close();
+	    try {
+			FileOutputStream fos = new FileOutputStream("JsonObjects/objects.json");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+	      	oos.writeObject(p);
+	      	oos.close();
 	    }  
 	    catch(IOException ex){
 	      ex.printStackTrace();
@@ -23,7 +22,7 @@ public class Disk{
 	}
 
 	public static ArrayList<Pattern> loadPattern(){
-		ArrayList<Pattern> patterns = new ArrayList<>();
+		ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 	
 		try {
 		FileInputStream fis = new FileInputStream("JsonObjects/objects.json");
