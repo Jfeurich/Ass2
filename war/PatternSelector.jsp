@@ -1,13 +1,10 @@
-<%@ page import="Model.Context, Model.Pattern"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="logic.Disk" %>
-<%@ page import="Model.ContextCategory" %>
+
 
 <jsp:include page="Header.jsp" >
     <jsp:param name="titel" value="Accountgegevens wijzigen" />
 </jsp:include>
 
-        <%
+       <%/*
             Pattern pattern = new Pattern("Patternname2");
             Context context = new Context(pattern.getName());
 
@@ -27,6 +24,21 @@
                         contextCategoryArray.add(ccg);
                     }
                 }
-            }
+            }*/
+       %>
 
-    %>
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" href="stylesheet.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+
+<body>
+</br></br>
+<h1>Pattern Selector</h1>
+<div class="patterninfo"></div>
+</body>
+</html>

@@ -147,3 +147,11 @@ h1{
     position:absolute;
     right:0px;
 }
+
+.madepatterninfo{
+    width:300px;
+    background:white;
+    color:#065396;
+    margin-left:auto;
+    margin-right:auto;
+}

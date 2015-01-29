@@ -98,6 +98,8 @@
 <body>
 </br></br>
     <h1>Pattern Editor</h1>
+<form action="PatternEditorSave.jsp" method="POST" target="_blank">
+
     <div class="patterninfo">
             <label>Pattern name</label></br>
         <div class="labelinfo">
@@ -131,8 +133,9 @@
         <!-- file upload -->
         <input type="file" id="file" onchange="startRead()" name="files[]" multiple />
         <!-- einde fileupload -->
-        <input type="submit" value="Add new pattern" class="button"></div>
+        <input type="submit" name="save" value="Add new pattern" class="button"></div>
     </div>
+    </form>
     <br/>
     <br/>
 
