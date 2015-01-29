@@ -40,16 +40,29 @@ public class PatternEditorServlet extends HttpServlet {
         }
 
         if(button.equals("save")){
+            //als het pattern opgeslagen moet worden dan
             PatternBuilder pb = PatternBuilderFactory.getInstance();
             ContextBuilder cb = ContextBuilderFactory.getInstance();
-            Pattern pattern = pb.makePattern("");
+            pattern = pb.makePattern("");
             Context context = cb.makeContext("description",pb.getPatternName());
             pb.addContext();
             pb.addDiagram();
             pb.setAllSolutions();
             pb.setConsequences();
             pb.setProblems();
-
+            for(Pattern patty : patterns){
+                //kijk of object al in de arraylist zit zo ja vervang object
+                if(patty.getName().equals(pattern.getName())){
+                    patterns.remove(patty);
+                    patterns.add(pattern);
+                }
+                //voeg object toe aan de arraylist
+                else{
+                    patterns.add(pattern);
+                }
+            }
+            //Sla de ArrayList weer op
+            Disk.savePattern(patterns);
         }
         else if(button.equals("cancel")){
             rd = req.getRequestDispatcher("PatternSelector.jsp");

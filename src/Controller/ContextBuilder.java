@@ -14,8 +14,16 @@ public class ContextBuilder {
         Context contextS= new Context(name);
         return context;
     }
+    public Context getContext(){
+        return this.context;
+    }
+    public void setContext(Context c){ this.context = c;}
 
-    public void setName (String name){context.setName(name);}
-    public void setContextCategory(ArrayList<ContextCategory> context) { this.contextArray = context; }
+    public void setName (String name){
+        context.setName(name);
+    }
+    public void setContextCategory(ArrayList<ContextCategory> context) {
+        this.contextArray = context;
+    }
 
 }

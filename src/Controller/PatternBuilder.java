@@ -15,6 +15,14 @@ public class PatternBuilder {
 		return pattern;
 	}
 
+	public void setPattern(Pattern p){
+		this.pattern = p;
+	}
+
+	public Pattern getPattern(){
+		return this.pattern;
+	}
+
 	public void setConsequences(String s){
 		pattern.setAllConsequences(s);
 	}
