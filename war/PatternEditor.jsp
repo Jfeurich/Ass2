@@ -23,9 +23,42 @@
     function startRead(evt) {
         var file = document.getElementById('file').files[0];
         if (file) {
-            //  getAsText(file);
-           // alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
+            if (file.type.match("image.*")) {
+                getAsImage(file);
+                alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
+            }
+            else {
+                getAsText(file);
+                alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
+            }
         }
+        evt.stopPropagation();
+        evt.preventDefault();
+    }
+    function startReadFromDrag(evt) {
+        var file = evt.dataTransfer.files[0];
+        if (file) {
+            if (file.type.match("image.*")) {
+                getAsImage(file);
+                alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
+            }
+            else {
+                getAsText(file);
+                alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
+            }
+        }
+        evt.stopPropagation();
+        evt.preventDefault();
+    }
+    function getAsImage(readFile) {
+        var reader = new FileReader();
+        reader.readAsDataURL(readFile);
+        reader.onload = addImg;
+    }
+    function addImg(imgsrc) {
+        var img = document.createElement('img');
+        img.setAttribute("src", imgsrc.target.result);
+        document.getElementById("op").insertBefore(img);
     }
 </script>
 <!-- einde inladen upload script -->
@@ -62,7 +95,7 @@
 
 
 <body>
-
+</br></br>
     <h1>Pattern Editor</h1>
     <div class="patterninfo">
             <label>Pattern name</label></br>
@@ -97,9 +130,16 @@
         <!-- file upload -->
         <input type="file" id="file" onchange="startRead()" name="files[]" multiple />
         <!-- einde fileupload -->
-        <input type="submit" value="Add new Pattern" class="button">
+        <input type="submit" value="Add new pattern" class="button"></div>
     </div>
     <br/>
     <br/>
+
+    <div class="import">
+    <input type="submit" value="Import  patterns" class="buttonimportexport">
+    </div>
+    <div class="export">
+        <input type="submit" value="Export  pattern" class="buttonimportexport alignright">
+    </div>
 </body>
 </html>

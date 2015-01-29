@@ -7,11 +7,6 @@ body {
     margin:0;
 }
 
-#menu{
-    border-bottom:1px solid black;
-    text-align:center;
-    background:black;
-}
 
 
 label{
@@ -31,6 +26,10 @@ h1{
     box-shadow: 2px 2px 5px #002545;
     padding-top:10px;
     padding-bottom:10px;
+    position:fixed;
+    width:100%;
+    top:0px;//
+
 }
 
 #Menu a {
@@ -81,6 +80,7 @@ h1{
     padding:10px;
     font-weight:bold;
     margin-left:170px;
+    box-shadow: 2px 2px 2px #002545;
 }
 
 .input_fields_wrap input[type="text"]{ margin-top:10px;}
@@ -118,4 +118,32 @@ h1{
     color:#065396;
     font-size:9pt;
     font-style:italic;
+}
+
+.buttonimportexport{
+    background:black;
+    color:white;
+    border:0px; text-align: center;
+    padding:10px;
+    font-weight:bold;
+    box-shadow: 2px 2px 2px #002545;
+}
+.buttonimportexport:hover{
+    background:#002e56;
+    box-shadow: 2px 2px 2px #002545;
+}
+.import{
+    position:fixed;
+    bottom:0px;
+}
+.export{
+    position:fixed;
+    bottom:0px;
+    right:0px;
+}
+
+
+.buttons{
+    position:absolute;
+    right:0px;
 }

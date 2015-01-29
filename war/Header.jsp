@@ -6,9 +6,13 @@
 </head>
 <body>
 <div id="Menu">
+
     <a href="PatternSelector.jsp">Pattern Selector</a>
     <a href="PatternEditor.jsp">Pattern Editor</a>
-</div>
 
+</div><!--
+<div class="buttons">
+<input type="submit" value="Import  patterns" class="buttonimportexport">  <input type="submit" value="Export  patterns" class="buttonimportexport">
+</div>-->
 </body>
 </html>
