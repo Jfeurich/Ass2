@@ -14,13 +14,8 @@
         <servlet-name>PatternSelectorServlet</servlet-name>
         <url-pattern>/PatternSelectorServlet.do</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>FileUploadHandler</servlet-name>
-        <servlet-class>View.FileUploadHandler</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FileUploadHandler</servlet-name>
-        <url-pattern>/upload</url-pattern>
-    </servlet-mapping>
+    <context-param>
+        <param-name>tempfile.dir</param-name>
+        <param-value>tmpfiles</param-value>
+    </context-param>
 </web-app>
