@@ -11,6 +11,7 @@ import Model.Context;
 import Model.ContextCategory;
 import Model.Pattern;
 import logic.Disk;
+import logic.Json;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
@@ -31,30 +32,20 @@ public class PatternEditorServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
-        boolean finished = false;
         String button = req.getParameter("button");
-        String p = req.getParameter("pattern");
-        ArrayList<Pattern> patterns = Disk.loadPattern();
-        Pattern pattern = null;
-        for(Pattern pat: patterns){
-            if(pat.getName().equals(p)){
-                pattern = pat;
-            }
-        }
+        ArrayList<Pattern> patterns = Json.loadPattern();
         if(button.equals("Add new pattern")){
             // Get the patterns from the JSP
-            String consequences = req.getParameter("consequences");
             String name = req.getParameter("name");
+            String consequences = req.getParameter("consequences");
             String allProblems = req.getParameter("problems");
             String allSolutions = req.getParameter("solutions");
             int totalTextfields = Integer.parseInt(req.getParameter("totalTextfields"));
             // Start saving the patterns
             PatternBuilder pb = PatternBuilderFactory.getInstance();
             ContextBuilder cb = ContextBuilderFactory.getInstance();
-            pattern = pb.makePattern(name);
-            Context context = cb.makeContext("description",name);
-            // Save image as file
-
+            pb.makePattern(name);
+            cb.makeContext(name);
             String fileName = req.getParameter("fileName");
             File file = new File(req.getServletContext().getAttribute("file")+File.separator+fileName);
             if(!file.exists()){
@@ -78,7 +69,6 @@ public class PatternEditorServlet extends HttpServlet {
             os.close();
             fis.close();
 
-
             // save context categories in context
             for (int i = 0;i<totalTextfields;i++ ){
                 String desc = req.getParameter("mytext"+Integer.toString(i));
@@ -86,26 +76,22 @@ public class PatternEditorServlet extends HttpServlet {
                 ContextCategory cc = new ContextCategory(desc,catnam);
                 cb.addContextCategory(cc);
             }
-            pb.addContext(context);
+            pb.addContext(cb.getContext());
             pb.addDiagram(file);
             pb.setAllSolutions(allSolutions);
             pb.setConsequences(consequences);
             pb.setProblems(allProblems);
-            for(Pattern patty : patterns){
-
-                if(patty.getName().equals(pattern.getName())){
-                    patterns.remove(patty);
-                    patterns.add(pattern);
-                    finished = true;
-
+            for(Pattern p : patterns){
+                if(p.getName().equals(pb.getPattern().getName())){
+                    patterns.remove(p);
+                    patterns.add(pb.getPattern());
                 }
                 else{
-                    patterns.add(pattern);
-                    finished = true;
+                    patterns.add(pb.getPattern());
                 }
             }
             //Sla de ArrayList weer op
-            Disk.savePattern(patterns);
+            Json.savePattern(patterns);
             rd = req.getRequestDispatcher("PatternEditorSave.jsp");
         }
         else if(button.equals("cancel")){

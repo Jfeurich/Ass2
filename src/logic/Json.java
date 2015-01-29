@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Json  {
-	public void savePattern(ArrayList<Pattern> p){
+	public static void savePattern(ArrayList<Pattern> p){
 	Gson gson = new Gson();
 	JsonElement element = gson.toJsonTree(p, new TypeToken<ArrayList<Pattern>>() {}.getType());
 	JsonArray jsonArray = element.getAsJsonArray();
@@ -31,7 +31,7 @@ public class Json  {
 	}
 }
 
-	public ArrayList<Pattern> loadPattern(){
+	public static ArrayList<Pattern> loadPattern(){
 	    ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 	    Gson gson = new Gson();
 	    JsonParser jsonParser = new JsonParser();
