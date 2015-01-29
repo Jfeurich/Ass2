@@ -12,10 +12,14 @@ import Model.ContextCategory;
 import Model.Pattern;
 import logic.Disk;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 //import java.io.InputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,7 +64,28 @@ public class PatternEditorServlet extends HttpServlet {
             Context context = cb.makeContext("description",pb.getPatternName());
             // TODO: find method to save file
 
-            File file = new File("/JsonObjects/diagrammen/");
+            String fileName = req.getParameter("fileName");
+            File file = new File(req.getServletContext().getAttribute("file")+File.separator+fileName);
+            if(!file.exists()){
+                throw new ServletException("File doesn't exists on server.");
+            }
+            System.out.println("File location on server::"+file.getAbsolutePath());
+            ServletContext ctx = getServletContext();
+            InputStream fis = new FileInputStream(file);
+            String mimeType = ctx.getMimeType(file.getAbsolutePath());
+            resp.setContentType(mimeType != null? mimeType:"application/octet-stream");
+            resp.setContentLength((int) file.length());
+            resp.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+
+            ServletOutputStream os = resp.getOutputStream();
+            byte[] bufferData = new byte[1024];
+            int read=0;
+            while((read = fis.read(bufferData))!= -1){
+                os.write(bufferData, 0, read);
+            }
+            os.flush();
+            os.close();
+            fis.close();
 
 
             // save context categories in context

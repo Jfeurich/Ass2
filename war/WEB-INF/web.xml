@@ -14,4 +14,8 @@
         <servlet-name>PatternSelectorServlet</servlet-name>
         <url-pattern>/PatternSelectorServlet.do</url-pattern>
     </servlet-mapping>
+    <context-param>
+        <param-name>tempfile.dir</param-name>
+        <param-value>tmpfiles</param-value>
+    </context-param>
 </web-app>
