@@ -32,9 +32,10 @@ public class PatternEditorServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         String button = req.getParameter("button");
+        RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         ArrayList<Pattern> patterns = loadPattern();
+        // TODO uitvinden waarom dit niet werkt!
         if(button.equals("Add new pattern")){
             // Get the patterns from the JSP
             String name = req.getParameter("name");
@@ -47,6 +48,7 @@ public class PatternEditorServlet extends HttpServlet {
             ContextBuilder cb = ContextBuilderFactory.getInstance();
             pb.makePattern(name);
             cb.makeContext(name);
+            // TODO UITVINDEN HOE WE DEZE DINGEN KUNNEN DOEN IN DE JSP
             String fileName = req.getParameter("fileName");
             File file = new File(req.getServletContext().getAttribute("file")+File.separator+fileName);
             if(!file.exists()){
