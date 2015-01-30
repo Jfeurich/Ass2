@@ -1,14 +1,6 @@
-<%@ page import="java.io.*,java.util.*, javax.servlet.*" %>
-<%@ page import="javax.servlet.http.*" %>
-<%@ page import="org.apache.commons.fileupload.*" %>
-<%@ page import="org.apache.commons.fileupload.disk.*" %>
-<%@ page import="org.apache.commons.fileupload.servlet.*" %>
-<%@ page import="org.apache.commons.io.output.*" %>
 <jsp:include page="Header.jsp" >
     <jsp:param name="titel" value="Accountgegevens wijzigen" />
 </jsp:include>
-
-
 
 <html>
 <head>
@@ -17,11 +9,11 @@
 <link rel="stylesheet" href="stylesheet.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-
+<%@ page session="true" language="java" %>
 <!-- upload script -->
 <script>
     if (window.File && window.FileReader && window.FileList && window.Blob) {
-       // alert("File API supported.!");
+        // alert("File API supported.!");
     } else {
         //alert("The File APIs are not fully supported in this browser.");
     }
@@ -98,7 +90,8 @@
 <body>
 </br></br>
     <h1>Pattern Editor</h1>
-<form action="PatternEditorServlet.do" method="POST" target="_blank">
+
+<form action="PatternEditorServlet.do" method="POST" target="_blank" enctype="multipart/form-data">
 
     <div class="patterninfo">
             <label>Pattern name</label></br>
@@ -131,7 +124,7 @@
     </div>
     <div class="patterninfo">
         <!-- file upload -->
-        <input type="file" name="file" id="file" onchange="startRead()" name="files[]" multiple />
+        <input type="file" name="file" />
         <!-- einde fileupload -->
         <input type="submit" name="button" value="Add new pattern" class="button"></div>
     </div>
@@ -140,10 +133,10 @@
     <br/>
 
     <div class="import">
-    <input type="submit" name="button" value="Import  patterns" class="buttonimportexport">
+    <input type="submit" name="button" value="Import patterns" class="buttonimportexport">
     </div>
     <div class="export">
-        <input type="submit" name="button" value="Export  pattern" class="buttonimportexport alignright">
+        <input type="submit" name="button" value="Export patterns" class="buttonimportexport alignright">
     </div>
 </body>
 </html>

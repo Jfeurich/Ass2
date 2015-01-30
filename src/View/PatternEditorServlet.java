@@ -3,28 +3,27 @@ package View;
 /**
  * Created by jayfeurich on 28/01/15.
  */
+
 import Controller.ContextBuilder;
 import Controller.ContextBuilderFactory;
 import Controller.PatternBuilder;
 import Controller.PatternBuilderFactory;
-import Model.Context;
 import Model.ContextCategory;
 import Model.Pattern;
-import logic.Disk;
 import logic.Json;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class PatternEditorServlet extends HttpServlet {
 
@@ -95,7 +94,12 @@ public class PatternEditorServlet extends HttpServlet {
             rd = req.getRequestDispatcher("PatternEditorSave.jsp");
         }
         else if(button.equals("cancel")){
-            rd = req.getRequestDispatcher("PatternEditorSave.jsp");
+            rd = req.getRequestDispatcher("PatternSelector.jsp");
+        }else if(button.equals("Import patterns")){
+            rd = req.getRequestDispatcher("PatternSelector.jsp");
+        }
+        else if(button.equals("Export patterns")){
+            rd = req.getRequestDispatcher("PatternSelector.jsp");
         }
         rd.forward(req, resp);
     }

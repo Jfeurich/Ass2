@@ -5,6 +5,7 @@
          xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
+
     <servlet>
         <servlet-name>PatternSelectorServlet</servlet-name>
         <servlet-class>View.PatternSelectorServlet</servlet-class>
@@ -15,6 +16,7 @@
         <url-pattern>/PatternSelectorServlet.do</url-pattern>
     </servlet-mapping>
     <servlet>
+
         <servlet-name>PatternEditorServlet</servlet-name>
         <servlet-class>View.PatternEditorServlet</servlet-class>
     </servlet>
