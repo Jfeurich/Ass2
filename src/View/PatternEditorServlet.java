@@ -35,6 +35,7 @@ public class PatternEditorServlet extends HttpServlet {
         String button = req.getParameter("button");
         RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         ArrayList<Pattern> patterns = loadPattern();
+
         // TODO uitvinden waarom dit niet werkt!
         if(button.equals("Add new pattern")){
             // Get the patterns from the JSP
@@ -43,6 +44,7 @@ public class PatternEditorServlet extends HttpServlet {
             String allProblems = req.getParameter("problems");
             String allSolutions = req.getParameter("solutions");
             int totalTextfields = Integer.parseInt(req.getParameter("totalTextfields"));
+
             // Start saving the patterns
             PatternBuilder pb = PatternBuilderFactory.getInstance();
             ContextBuilder cb = ContextBuilderFactory.getInstance();

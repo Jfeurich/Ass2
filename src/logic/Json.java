@@ -17,7 +17,8 @@ public class Json  {
 	JsonElement element = gson.toJsonTree(p, new TypeToken<ArrayList<Pattern>>() {}.getType());
 	JsonArray jsonArray = element.getAsJsonArray();
 	String json = gson.toJson(jsonArray);
-	File JsonFile = new File("JsonObjects/jsonobjects.json");
+	File JsonFile = new File("webapps/Ass2/WEB-INF/JsonObjects/jsonobjects.json");
+	String jsonFilePath = JsonFile.getAbsolutePath();
 	if(!JsonFile.exists()) {
 		try {
 			JsonFile.createNewFile();
@@ -27,7 +28,7 @@ public class Json  {
 	}
 	try {
 		//write converted json data to a file named "file.json"
-		FileWriter writer = new FileWriter(JsonFile);
+		FileWriter writer = new FileWriter(jsonFilePath);
 		writer.write(json);
 		writer.close();
 	} 
@@ -40,7 +41,8 @@ public class Json  {
 	    ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 	    Gson gson = new Gson();
 	    JsonParser jsonParser = new JsonParser();
-		File JsonFile = new File("JsonObjects/jsonobjects.json");
+		File JsonFile = new File("webapps/Ass2/WEB-INF/JsonObjects/jsonobjects.json");
+		String jsonFilePath = JsonFile.getAbsolutePath();
 		if(!JsonFile.exists()) {
 			try {
 				JsonFile.createNewFile();
@@ -49,7 +51,7 @@ public class Json  {
 			}
 		}
 		try {
-	        BufferedReader br = new BufferedReader(new FileReader(JsonFile));
+	        BufferedReader br = new BufferedReader(new FileReader(jsonFilePath));
 	        JsonElement jsonElement = jsonParser.parse(br);
 
 	        //Create generic type
