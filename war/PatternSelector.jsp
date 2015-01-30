@@ -5,33 +5,10 @@
 <%@ page import="logic.Disk" %>
 <%@ page import="java.util.HashSet" %>
 
-
 <jsp:include page="Header.jsp" >
     <jsp:param name="titel" value="Accountgegevens wijzigen" />
 </jsp:include>
 
-       <%/*
-            Pattern pattern = new Pattern("Patternname2");
-            Context context = new Context(pattern.getName());
-
-            ContextCategory cc = new ContextCategory("Scope","Behavioural");
-            context.addToContext(cc);
-            pattern.setContext(context);
-
-
-            ArrayList<Context> allContexts = new ArrayList<Context>();
-            ArrayList<Pattern> allPatterns = Disk.loadPattern();
-            ArrayList<ContextCategory> contextCategoryArray = new ArrayList<ContextCategory>();
-
-            for (Pattern p : allPatterns){
-                allContexts.add(p.getContext());
-                for(Context c : allContexts){
-                    for(ContextCategory ccg : c.getContextCategory()){
-                        contextCategoryArray.add(ccg);
-                    }
-                }
-            }*/
-       %>
 
 <html>
 <head>
@@ -49,26 +26,31 @@
 
 
     <label>Category</label><br/>
+    <form action="PatternSelectorp2.jsp" method="GET" >
 
+    <%
 
-        <%
-            Pattern p = new Pattern("TestPattern");
-            Pattern p2 = new Pattern("Pattern2");
-            Context c = new Context(p.getName());
-            Context co2 = new Context(p2.getName());
-            ContextCategory ccg2 = new ContextCategory("Class","By Scope");
-            ContextCategory ccg = new ContextCategory("Behavioural","By purpose");
-            c.addToContext(ccg);
-            co2.addToContext(ccg2);
-            p.setContext(c);
-            p2.setContext(co2);
+        Pattern p = new Pattern("Builder Pattern");
+        p.setAllProblems("An application needs to create the elements of a complex aggregate.; ");
+        Pattern p2 = new Pattern("Adapter Pattern");
+        p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
+                "You want to use an object in an environment that expects an interface that is different from the object's interface.");
+        Context c = new Context(p.getName());
+        Context co2 = new Context(p2.getName());
+        ContextCategory ccg2 = new ContextCategory("Structural","By Purpose");
+        ContextCategory ccg = new ContextCategory("Object","By Scope");
+        c.addToContext(ccg);
+        co2.addToContext(ccg2);
+        p.setContext(c);
+        p2.setContext(co2);
 
-            ArrayList<Pattern> allePatterns = new ArrayList<Pattern>();
-            // ArrayList<Pattern> allePatterns = Disk.loadPattern();
-            ArrayList<Context> alleContext = new ArrayList<Context>();
-            ArrayList<ContextCategory> alleCCategories = new ArrayList<ContextCategory>();
-            allePatterns.add(p);
-            allePatterns.add(p2);
+        ArrayList<Pattern> allePatterns = new ArrayList<Pattern>();
+        // ArrayList<Pattern> allePatterns = Disk.loadPattern();
+        ArrayList<Context> alleContext = new ArrayList<Context>();
+        ArrayList<ContextCategory> alleCCategories = new ArrayList<ContextCategory>();
+        allePatterns.add(p);
+        allePatterns.add(p2);
+
             for (Pattern p1 : allePatterns){
                // name = p1.getName();
                 Context c1 = p1.getContext();
@@ -89,13 +71,13 @@
         %>
 
 
-    <select name="sometext2" size="5">
+    <select name="categorynamelist" size="5" >
         <%
             for(ContextCategory cc4 : alleCCategories){
         %><option><%=cc4.getCategoryName()%><option><%}%>
     </select></br>
     </br><label>Subtype</label><br/>
-    <select name="sometext3" size="5">
+    <select name="subtypelist" size="5">
         <%
             for(ContextCategory conCat : alleCCategories){
         %><option><%=conCat.getDescription()%></option><%
@@ -103,14 +85,12 @@
 
     </select>
     <br/><br/>
-    <label>Patterns</label><br/>
-    <select name="sometext4" size="5">
-        <%
-            //for()
-        %>
-    </select>
+        <input type="submit" name="submitbutton" class="button" >
+
+    </form>
+    Woohoo
     <br/>
-    Woohoo3
+
 </div>
 
 </body>
