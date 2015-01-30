@@ -10,7 +10,6 @@ import Controller.PatternBuilder;
 import Controller.PatternBuilderFactory;
 import Model.ContextCategory;
 import Model.Pattern;
-import logic.Json;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -25,6 +24,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import static logic.Json.loadPattern;
+import static logic.Json.savePattern;
+
 public class PatternEditorServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -32,7 +34,7 @@ public class PatternEditorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         String button = req.getParameter("button");
-        ArrayList<Pattern> patterns = Json.loadPattern();
+        ArrayList<Pattern> patterns = loadPattern();
         if(button.equals("Add new pattern")){
             // Get the patterns from the JSP
             String name = req.getParameter("name");
@@ -90,7 +92,7 @@ public class PatternEditorServlet extends HttpServlet {
                 }
             }
             //Sla de ArrayList weer op
-            Json.savePattern(patterns);
+            savePattern(patterns);
             rd = req.getRequestDispatcher("PatternEditorSave.jsp");
         }
         else if(button.equals("cancel")){

@@ -88,7 +88,8 @@
 
 
 <body>
-</br></br>
+</br>
+</br>
     <h1>Pattern Editor</h1>
 
 <form action="PatternEditorServlet.do" method="POST" target="_blank" enctype="multipart/form-data">
@@ -133,10 +134,10 @@
     <br/>
 
     <div class="import">
-    <input type="submit" name="button" value="Import patterns" class="buttonimportexport">
+        <input type="submit" name="button" value="Import patterns" class="buttonimportexport">
     </div>
     <div class="export">
-        <input type="submit" name="button" value="Export patterns" class="buttonimportexport alignright">
+        <input type="submit" name="button" value="Export patterns" class="buttonimportexport" alignright>
     </div>
 </body>
 </html>
