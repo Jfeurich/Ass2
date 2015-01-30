@@ -11,7 +11,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="logic.Disk" %>
 <%@ page import="java.util.HashSet" %>
-
+<%@ page import="java.io.File" %>
+<%@ page import="java.io.IOException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="Header.jsp" >
   <jsp:param name="titel" value="Accountgegevens wijzigen" />
@@ -23,7 +24,7 @@
     <title></title>
 </head>
 <body>
-</br></br></br></br></br>
+</br></br></br>
 <div class="patterninfo">
     <div class="labelinfo">
         <span class="note">
@@ -34,10 +35,21 @@
     <%
 
         Pattern p = new Pattern("Builder Pattern");
-        p.setAllProblems("An application needs to create the elements of a complex aggregate.; ");
+        p.setAllProblems("An application needs to create the elements of a complex aggregate. ");
         Pattern p2 = new Pattern("Adapter Pattern");
         p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
-                          "You want to use an object in an environment that expects an interface that is different from the object's interface.");
+                "You want to use an object in an environment that expects an interface that is different from the object's interface.");
+
+        p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.;");
+        p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces ");
+
+        // file test
+        File file = new File("\\images\\rodepanda.png");
+
+        p.setDiagram(file);
+
+
+
         Context c = new Context(p.getName());
         Context co2 = new Context(p2.getName());
         ContextCategory ccg2 = new ContextCategory("Structural","By Purpose");
@@ -53,8 +65,8 @@
         ArrayList<ContextCategory> alleCCategories = new ArrayList<ContextCategory>();
         allePatterns.add(p);
         allePatterns.add(p2);%>
-    </div>
-    <br/><label>Patterns</label><br/>
+    </div></br>
+
     <div class="Pattern">
        <!-- <select name="sometext4" size="5">-->
          <%
@@ -64,18 +76,40 @@
                 // get the selected value from the selectlists.
                 String categorySelected = request.getParameter("categorynamelist");
                 String subtypeSelected = request.getParameter("subtypelist");
+
                 // if selected value from categorynamelist equals the name in the pattern
                 if (cc.getCategoryName().equals(categorySelected)) {
                     // if selected value from subtypelist equals the name in the pattern
                     if (subtypeSelected.equals(cc.getDescription())) {
                     // then put the pattername as a option in the patterns-selectlist
                         String problem = p99.getAllProblems();
-                        problem = problem.replaceAll("(;)", "<br />");
+                        String name = p99.getName();
+                        problem = problem.replaceAll("(;)", "<br /><li>");
+
+                        String consequences = p99.getAllConsequences();
+                        consequences = consequences.replaceAll("(;)","<br/><li>");
+
+                        file = p99.getDiagram();
+                        String url = request.getRequestURL().toString();
+                        String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
+                        String filename = baseURL + "/images/" +file.getName();
+
                      %>
 
-                    <label class="pattername"><%=p99.getName()%></label></br>
-                    <span class="problemtitle">Problems:</span></br>
-                    <span class="problem"><%=problem%></span>
+                    <div class="pattername"><%=name%></div>
+                    <span class="title">Problems:</span></br>
+                    <span class="problem"><ul><li><%=problem%></li></ul></span>
+                    <span class="title">Consequences:</span></br>
+                    <span class="consequences"><ul><li><%=consequences%></li></ul></span>
+                    </br>
+        Image pattern:</br>
+                    <span class="file"><img src="<%=filename%>"></span>
+                    </br>
+        Image :</br>
+        <img src="c:/Users/Elvira/Desktop/websiteuitleg/images/groot/rodepanda2.png">
+                    </div>
+                    <div class="select">
+                        <input type="submit" name="<%=p99.getName()%>" value="Select this Pattern">
                     </div>
                   <%  }
                 }

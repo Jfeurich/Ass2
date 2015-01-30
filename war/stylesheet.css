@@ -41,7 +41,7 @@ h1{
     margin-right:30px;
 }
 
-#Menu a:hover{  color:#065396;
+#Menu a:hover{  color:#065396;  cursor:pointer;
 }
 .patterninfo {
     margin-left:auto;
@@ -91,7 +91,7 @@ h1{
     color:white;
     text-decoration:none;
 }
-.remove_field:hover{  color:black;}
+.remove_field:hover{  color:black;  cursor:pointer;}
 
 .add_field_button{
     position:absolute;
@@ -131,6 +131,7 @@ h1{
 .buttonimportexport:hover{
     background:#002e56;
     box-shadow: 2px 2px 2px #002545;
+    cursor:pointer;
 }
 .import{
     position:fixed;
@@ -160,15 +161,51 @@ h1{
     background:white;
     color:black;
     border-radius:0.2em;
-}
-.pattername{     font-family: 'Raleway', sans-serif;
-    color:black;
-}
-.problemtitle{
+    width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    box-shadow: 2px 2px 2px #002545;
+    padding-bottom:5px;
 
-
+}
+.pattername{
+    font-family: 'Raleway', sans-serif;
+    color:white;
+    background:black;
+    width:100%;
+    text-align:center;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.title{
+    text-decoration:underline;
+    font-family: 'Raleway', sans-serif;
+    position:absolute; margin-left:10px;
+    margin-top:10px;
 }
 
 .problem{
 
+}
+.select{
+    width:600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.select  input[type="submit"] {
+    background:black;
+    color:white;
+    border:none;
+    margin-top:-0px;
+    margin-left:476px;
+    position:absolute;
+    padding-top:5px;
+
+    padding-bottom:5px;
+    border-bottom-left-radius:0.2em;
+    border-bottom-right-radius:0.2em;
+}
+.select input[type="submit"]:hover{
+    cursor:pointer;
+    background:#002e56;
 }

@@ -4,6 +4,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="logic.Disk" %>
 <%@ page import="java.util.HashSet" %>
+<%@ page import="java.io.File" %>
+<%@ page import="java.io.IOException" %>
 
 <jsp:include page="Header.jsp" >
     <jsp:param name="titel" value="Accountgegevens wijzigen" />
@@ -35,6 +37,15 @@
         Pattern p2 = new Pattern("Adapter Pattern");
         p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
                 "You want to use an object in an environment that expects an interface that is different from the object's interface.");
+
+        p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.");
+        p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces.");
+
+        // file test
+        File file = new File("C:\\Users\\Elvira\\Desktop\\websiteuitleg\\images\\groot\\rodepanda2.png");
+        p.setDiagram(file);
+
+
         Context c = new Context(p.getName());
         Context co2 = new Context(p2.getName());
         ContextCategory ccg2 = new ContextCategory("Structural","By Purpose");
@@ -88,7 +99,7 @@
         <input type="submit" name="submitbutton" class="button" >
 
     </form>
-    Woohoo
+
     <br/>
 
 </div>
