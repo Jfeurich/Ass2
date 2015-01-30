@@ -1,3 +1,9 @@
+<%@ page import="Model.Context" %>
+<%@ page import="Model.ContextCategory" %>
+<%@ page import="Model.Pattern" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="logic.Disk" %>
+<%@ page import="java.util.HashSet" %>
 
 
 <jsp:include page="Header.jsp" >
@@ -40,11 +46,72 @@
 </br></br>
 <h1>Pattern Selector</h1>
 <div class="patterninfo">
-    Select Category
-    <select name="sometext" size="5">
-        <option>Category1</option>
-        <option>Category2</option>
+
+
+    <label>Category</label><br/>
+
+
+        <%
+            Pattern p = new Pattern("TestPattern");
+            Pattern p2 = new Pattern("Pattern2");
+            Context c = new Context(p.getName());
+            Context co2 = new Context(p2.getName());
+            ContextCategory ccg2 = new ContextCategory("Class","By Scope");
+            ContextCategory ccg = new ContextCategory("Behavioural","By purpose");
+            c.addToContext(ccg);
+            co2.addToContext(ccg2);
+            p.setContext(c);
+            p2.setContext(co2);
+
+            ArrayList<Pattern> allePatterns = new ArrayList<Pattern>();
+            // ArrayList<Pattern> allePatterns = Disk.loadPattern();
+            ArrayList<Context> alleContext = new ArrayList<Context>();
+            ArrayList<ContextCategory> alleCCategories = new ArrayList<ContextCategory>();
+            allePatterns.add(p);
+            allePatterns.add(p2);
+            for (Pattern p1 : allePatterns){
+               // name = p1.getName();
+                Context c1 = p1.getContext();
+                alleContext.add(c1);
+
+                for(Context c2 : alleContext){
+                    ArrayList<ContextCategory> cc3 = c2.getContextCategory();
+
+                    for (ContextCategory c4 : cc3) {
+                        alleCCategories.add(c4);
+                    }
+                }
+            }
+            HashSet hashAllCat = new HashSet();
+            hashAllCat.addAll(alleCCategories);
+            alleCCategories.clear();
+            alleCCategories.addAll(hashAllCat);
+        %>
+
+
+    <select name="sometext2" size="5">
+        <%
+            for(ContextCategory cc4 : alleCCategories){
+        %><option><%=cc4.getCategoryName()%><option><%}%>
+    </select></br>
+    </br><label>Subtype</label><br/>
+    <select name="sometext3" size="5">
+        <%
+            for(ContextCategory conCat : alleCCategories){
+        %><option><%=conCat.getDescription()%></option><%
+        }%>
+
     </select>
+    <br/><br/>
+    <label>Patterns</label><br/>
+    <select name="sometext4" size="5">
+        <%
+            //for()
+        %>
+    </select>
+    <br/>
+    Woohoo3
 </div>
+
 </body>
 </html>
