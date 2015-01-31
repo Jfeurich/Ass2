@@ -32,6 +32,8 @@
             and the subtype:<b><%= request.getParameter("subtypelist") %></b><br>
         </span>
     </div>
+    <form action="PatternSelectorp3.jsp" method="GET" >
+
     <%
 
         Pattern p = new Pattern("Builder Pattern");
@@ -40,14 +42,14 @@
         p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
                 "You want to use an object in an environment that expects an interface that is different from the object's interface.");
 
-        p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.;");
-        p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces ");
+        p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.");
+        p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces. ");
 
         // file test
         File file = new File("\\images\\rodepanda.png");
-
+        File file2 = new File("\\images\\puppies.png");
         p.setDiagram(file);
-
+        p2.setDiagram(file2);
 
 
         Context c = new Context(p.getName());
@@ -105,11 +107,11 @@
         Image pattern:</br>
                     <span class="file"><img src="<%=filename%>"></span>
                     </br>
-        Image :</br>
-        <img src="c:/Users/Elvira/Desktop/websiteuitleg/images/groot/rodepanda2.png">
+                    <input type="hidden" name="pattern" value="<%=p99.getName()%>">
                     </div>
                     <div class="select">
-                        <input type="submit" name="<%=p99.getName()%>" value="Select this Pattern">
+                        <div class="text">Choose <input type="submit" name="button" value="<%=p99.getName()%>"></div>
+
                     </div>
                   <%  }
                 }
@@ -120,5 +122,7 @@
        <!-- </select>-->
 
         </div>
+</br></br>
+    </form>
   </body>
 </html>

@@ -188,24 +188,68 @@ h1{
 
 }
 .select{
+    font-family: 'Raleway', sans-serif;
     width:600px;
     margin-left:auto;
     margin-right:auto;
 }
-.select  input[type="submit"] {
+.text{
+    padding-left:5px;
+}
+.select .text  input[type="submit"] {
     background:black;
     color:white;
     border:none;
-    margin-top:-0px;
-    margin-left:476px;
-    position:absolute;
-    padding-top:5px;
+/* margin-top:-0px;
+ margin-left:476px;*
+ position:absolute;*/
+ padding-top:5px;
 
-    padding-bottom:5px;
-    border-bottom-left-radius:0.2em;
-    border-bottom-right-radius:0.2em;
+ padding-bottom:5px;
+ border-bottom-left-radius:0.2em;
+ border-bottom-right-radius:0.2em;
 }
-.select input[type="submit"]:hover{
-    cursor:pointer;
-    background:#002e56;
+.select .text input[type="submit"]:hover{
+ cursor:pointer;
+ background:#002e56;
+}
+
+.text{
+ margin-top:-0px;
+ margin-left:426px;
+ position:absolute;
+ background:black;
+ color:white;
+}
+
+.choosenpattern{
+    width:500px;
+    background:white;
+    color:black;
+    margin-top:30px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:0.2em;    box-shadow: 2px 2px 2px #002545;
+}
+
+.choosentitle{
+    font-family: 'Raleway', sans-serif;
+    background:black; color:white;
+    text-align:center;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.choosendiagram{
+    text-align:center;
+    padding-bottom:10px;
+    padding-top:10px;
+}
+
+.center{
+    text-align:center;
+}
+.solutiontext{
+    width:450px;
+    margin-left:auto;
+    margin-right:auto;
 }

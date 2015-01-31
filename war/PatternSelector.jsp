@@ -1,11 +1,10 @@
 <%@ page import="Model.Context" %>
 <%@ page import="Model.ContextCategory" %>
 <%@ page import="Model.Pattern" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="logic.Disk" %>
-<%@ page import="java.util.HashSet" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.io.IOException" %>
+<%@ page import="java.util.*" %>
 
 <jsp:include page="Header.jsp" >
     <jsp:param name="titel" value="Accountgegevens wijzigen" />
@@ -42,15 +41,23 @@
         p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces.");
 
         // file test
-        File file = new File("C:\\Users\\Elvira\\Desktop\\websiteuitleg\\images\\groot\\rodepanda2.png");
+        File file = new File("\\images\\rodepanda.png");
+        File file2 = new File("\\images\\puppies.png");
         p.setDiagram(file);
+        p2.setDiagram(file2);
+
 
 
         Context c = new Context(p.getName());
         Context co2 = new Context(p2.getName());
-        ContextCategory ccg2 = new ContextCategory("Structural","By Purpose");
+
+
         ContextCategory ccg = new ContextCategory("Object","By Scope");
+        ContextCategory ccg_2 = new ContextCategory("Structural","By Purpose"); // nieuwe category
+        ContextCategory ccg2 = new ContextCategory("Structural","By Purpose");
+
         c.addToContext(ccg);
+        c.addToContext(ccg_2);
         co2.addToContext(ccg2);
         p.setContext(c);
         p2.setContext(co2);
@@ -62,6 +69,8 @@
         allePatterns.add(p);
         allePatterns.add(p2);
 
+        ArrayList<String>alleSubtypes = new ArrayList<String>();
+        ArrayList<String>alleCategories = new ArrayList<String>();
             for (Pattern p1 : allePatterns){
                // name = p1.getName();
                 Context c1 = p1.getContext();
@@ -72,36 +81,46 @@
 
                     for (ContextCategory c4 : cc3) {
                         alleCCategories.add(c4);
+                        alleCategories.add(c4.getCategoryName());
+                        alleSubtypes.add(c4.getDescription());
                     }
                 }
             }
-            HashSet hashAllCat = new HashSet();
+
+        List list = new ArrayList<ContextCategory>(alleCCategories);
+
+        Set<ContextCategory> hashset = new HashSet<ContextCategory>(list);
+
+           HashSet hashAllCat = new HashSet();
             hashAllCat.addAll(alleCCategories);
+
             alleCCategories.clear();
             alleCCategories.addAll(hashAllCat);
-        %>
 
+            Set hashset2 = new HashSet(alleCategories);
+		    list = new ArrayList(hashset2);
 
-    <select name="categorynamelist" size="5" >
-        <%
-            for(ContextCategory cc4 : alleCCategories){
-        %><option><%=cc4.getCategoryName()%><option><%}%>
-    </select></br>
-    </br><label>Subtype</label><br/>
-    <select name="subtypelist" size="5">
-        <%
-            for(ContextCategory conCat : alleCCategories){
-        %><option><%=conCat.getDescription()%></option><%
-        }%>
+		    Set hashset3 = new HashSet(alleSubtypes);
+		    list = new ArrayList(hashset3);
 
-    </select>
-    <br/><br/>
-        <input type="submit" name="submitbutton" class="button" >
+    %>
+        <select name = "categorynamelist" size="5">
+           <% Iterator iter = hashset2.iterator();
+            while (iter.hasNext()) {%>
+            <option><%=iter.next()%></option>
+          <% }%>
+        </select>
+    </br> <label>Subtype</label><br/>
+        <select name = "subtypelist" size="5">
+            <% Iterator iter2 = hashset3.iterator();
+                while (iter2.hasNext()) {%>
+
+            <option><%=iter2.next()%></option>
+            <% }%>
+        </select>
+        <input type="submit" name="submitbutton" class="button"  value="Zoek Pattern">
 
     </form>
-
-    <br/>
-
 </div>
 
 </body>
