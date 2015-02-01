@@ -37,7 +37,8 @@ public class PatternEditorServlet extends HttpServlet {
                 String consequences = req.getParameter("consequences");
                 String allProblems = req.getParameter("problems");
                 String allSolutions = req.getParameter("solutions");
-                int totalTextfields = Integer.parseInt(req.getParameter("totalTextfields"));
+                int totalTextfields = Integer.
+                        parseInt(req.getParameter("totalTextfields"));
                 System.out.println(totalTextfields);
                 // Try to load a file into this pattern
                 // TODO UITVINDEN HOE WE DEZE DINGEN KUNNEN DOEN IN DE JSP

@@ -105,8 +105,10 @@
     <br/>
     <br/>
 
-    <div class="import">
-        <input type="submit" name="import" value="Import patterns" class="buttonimportexport">
+    <div class="import" onclick="javascript:location.href='ImportPattern.jsp'">
+        Import patterns
+       <!-- <input type="submit" name="import" value="Import patterns" class="buttonimportexport" onclick="javascript:location.href='ImportPattern.jsp'">
+        -->
     </div>
     <div class="export">
         <input type="submit" name="export" value="Export patterns" class="buttonimportexport" alignright>

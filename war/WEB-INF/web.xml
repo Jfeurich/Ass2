@@ -24,6 +24,15 @@
         <url-pattern>/PatternEditorServlet.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>PatternImportServlet</servlet-name>
+        <servlet-class>View.PatternImportServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PatternImportServlet</servlet-name>
+        <url-pattern>/PatternImportServlet.do</url-pattern>
+    </servlet-mapping>
+
     <context-param>
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://C:/apache-tomcat-7.0.39/apache-tomcat-7.0.39/webapps/Ass2/WEB-INF/classes" />
+    <output url="file://$MODULE_DIR$/../war/WEB-INF/classes" />
     <output-test url="file:///test/Ass2" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
