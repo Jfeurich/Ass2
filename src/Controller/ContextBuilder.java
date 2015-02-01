@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class ContextBuilder {
     private Context context;
     private ArrayList<ContextCategory> contextArray = new ArrayList<ContextCategory>();
-    public Context makeContext(String name){
+    public void makeContext(String name){
         Context context = new Context(name);
-        return context;
+        this.context = context;
     }
     public Context getContext(){
         return this.context;
