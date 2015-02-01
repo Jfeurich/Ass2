@@ -17,7 +17,6 @@
     } else {
         //alert("The File APIs are not fully supported in this browser.");
     }
-
     function startRead(evt) {
         var file = document.getElementById('file').files[0];
         if (file) {
@@ -90,7 +89,7 @@
 </br>
     <h1>Pattern Editor</h1>
 
-<form action="PatternEditorServlet.do" method="POST" enctype="multipart/form-data">
+<form action="PatternEditorServlet.do" method="post">
     <% %>
     <div class="patterninfo">
             <label>Pattern name</label></br>
@@ -127,15 +126,15 @@
         <!-- einde fileupload -->
         <input type="submit" name="button" value="Add new pattern" class="button"></div>
     </div>
-    </form>
     <br/>
     <br/>
 
     <div class="import">
-        <input type="submit" name="button" value="Import patterns" class="buttonimportexport">
+        <input type="submit" name="import" value="Import patterns" class="buttonimportexport">
     </div>
     <div class="export">
-        <input type="submit" name="button" value="Export patterns" class="buttonimportexport" alignright>
+        <input type="submit" name="export" value="Export patterns" class="buttonimportexport" alignright>
     </div>
+</form>
 </body>
 </html>

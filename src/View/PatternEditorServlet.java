@@ -8,6 +8,7 @@ import Controller.ContextBuilder;
 import Controller.ContextBuilderFactory;
 import Controller.PatternBuilder;
 import Controller.PatternBuilderFactory;
+import Model.Context;
 import Model.ContextCategory;
 import Model.Pattern;
 
@@ -23,69 +24,33 @@ import static logic.Json.loadPattern;
 import static logic.Json.savePattern;
 
 public class PatternEditorServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
-
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-        String button = req.getParameter("button");
-        RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
-        ArrayList<Pattern> patterns = loadPattern();
-        if (patterns == null){
-            patterns = new ArrayList<Pattern>();
-        }
-        // TODO uitvinden waarom dit niet werkt!
-        if(null == button){
-            //vergeet file, sla pattern gewoon op.
-            String name = req.getParameter("name");
-            String consequences = req.getParameter("consequences");
-            String allProblems = req.getParameter("problems");
-            String allSolutions = req.getParameter("solutions");
-            String totalTextfields = req.getParameter("totalTextfields");
-            System.out.println(totalTextfields + "lol");
-            int ttf = Integer.parseInt(totalTextfields);
-            PatternBuilder pb = PatternBuilderFactory.getInstance();
-            ContextBuilder cb = ContextBuilderFactory.getInstance();
-            pb.makePattern(name);
-            cb.makeContext(name);
-            for (int i = 0;i<ttf;i++ ){
-                String desc = req.getParameter("mytext"+Integer.toString(i));
-                String catnam = req.getParameter("subcat"+Integer.toString(i));
-                ContextCategory cc = new ContextCategory(desc,catnam);
-                cb.addContextCategory(cc);
+            String button = req.getParameter("button");
+            System.out.println(button +"loldongs");
+            RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
+            ArrayList<Pattern> patterns = loadPattern();
+            if (patterns == null) {
+                patterns = new ArrayList<Pattern>();
             }
-            pb.addContext(cb.getContext());
-            pb.setAllSolutions(allSolutions);
-            pb.setConsequences(consequences);
-            pb.setProblems(allProblems);
-            for(Pattern p : patterns){
-                if(p.getName().equals(pb.getPattern().getName())){
-                    patterns.remove(p);
-                    patterns.add(pb.getPattern());
-                }
-                else{
-                    patterns.add(pb.getPattern());
-                }
-            }
-            savePattern(patterns);
-            rd = req.getRequestDispatcher("PatternEditorSave.jsp");
-        }
-        else if(button.equals("Add new pattern")){
-            // Get the patterns from the JSP
+            // TODO uitvinden waarom dit niet werkt!
+            if (button.equals("Add new pattern")) {
+                // Get the patterns from the JSP
 
-            String name = req.getParameter("name");
-            String consequences = req.getParameter("consequences");
-            String allProblems = req.getParameter("problems");
-            String allSolutions = req.getParameter("solutions");
-            int totalTextfields = Integer.parseInt(req.getParameter("totalTextfields"));
+                String name = req.getParameter("name");
+                String consequences = req.getParameter("consequences");
+                String allProblems = req.getParameter("problems");
+                String allSolutions = req.getParameter("solutions");
+                int totalTextfields = Integer.parseInt(req.getParameter("totalTextfields"));
 
-            // Try to load a file into this pattern
-            // TODO UITVINDEN HOE WE DEZE DINGEN KUNNEN DOEN IN DE JSP
+                // Try to load a file into this pattern
+                // TODO UITVINDEN HOE WE DEZE DINGEN KUNNEN DOEN IN DE JSP
 //            String fileName = req.getParameter("fileName");
 //            File file = new File(req.getServletContext().getAttribute("file")+File.separator+fileName);
 //            if(!file.exists()){
 //                throw new ServletException("File doesn't exist on server.");
 //            }
-            //System.out.println("File location on server::"+file.getAbsolutePath());
+                //System.out.println("File location on server::"+file.getAbsolutePath());
 //            ServletContext ctx = getServletContext();
 //            InputStream fis = new FileInputStream(file);
 //            String mimeType = ctx.getMimeType(file.getAbsolutePath());
@@ -102,42 +67,38 @@ public class PatternEditorServlet extends HttpServlet {
 //            os.close();
 //            fis.close();
 
-            //Store stuff in pattern
-            PatternBuilder pb = PatternBuilderFactory.getInstance();
-            ContextBuilder cb = ContextBuilderFactory.getInstance();
-            pb.makePattern(name);
-            cb.makeContext(name);
-            for (int i = 0;i<totalTextfields;i++ ){
-                String desc = req.getParameter("mytext"+Integer.toString(i));
-                String catName = req.getParameter("subcat"+Integer.toString(i));
-                ContextCategory cc = new ContextCategory(desc,catName);
-                cb.addContextCategory(cc);
-            }
-            pb.addContext(cb.getContext());
+                //Store stuff in pattern
+                PatternBuilder pb = PatternBuilderFactory.getInstance();
+                ContextBuilder cb = ContextBuilderFactory.getInstance();
+                Pattern p = new Pattern(name);
+                Context c = cb.makeContext(name);
+                for (int i = 0; i < totalTextfields; i++) {
+                    String desc = req.getParameter("mytext" + Integer.toString(i));
+                    String catName = req.getParameter("subcat" + Integer.toString(i));
+                    ContextCategory cc = new ContextCategory(desc, catName);
+                    c.addToContext(cc);
+                }
+                p.setContext(c);
 //            pb.addDiagram(file);
-            pb.setAllSolutions(allSolutions);
-            pb.setConsequences(consequences);
-            pb.setProblems(allProblems);
-            for(Pattern p : patterns){
-                if(p.getName().equals(pb.getPattern().getName())){
-                    patterns.remove(p);
-                    patterns.add(pb.getPattern());
+                p.setAllSolutions(allSolutions);
+                p.setAllConsequences(consequences);
+                p.setAllProblems(allProblems);
+                for (Pattern p1 : patterns) {
+                    if (p1.getName().equals(p.getName())) {
+                        patterns.remove(p1);
+                        patterns.add(p);
+                    } else {
+                        patterns.add(p);
+                    }
                 }
-                else{
-                    patterns.add(pb.getPattern());
-                }
+                //Sla de ArrayList weer op
+                savePattern(patterns);
+                rd = req.getRequestDispatcher("PatternEditorSave.jsp");
+            } else if (button.equals("Import patterns")) {
+                rd = req.getRequestDispatcher("PatternSelector.jsp");
+            } else if (button.equals("Export patterns")) {
+                rd = req.getRequestDispatcher("PatternSelector.jsp");
             }
-            //Sla de ArrayList weer op
-            savePattern(patterns);
-            rd = req.getRequestDispatcher("PatternEditorSave.jsp");
-        }
-        else if(button.equals("Import patterns")){
-            rd = req.getRequestDispatcher("PatternSelector.jsp");
-        }
-        else if(button.equals("Export patterns")){
-            rd = req.getRequestDispatcher("PatternSelector.jsp");
-        }
-        rd.forward(req, resp);
-
+            rd.forward(req, resp);
     }
 }
