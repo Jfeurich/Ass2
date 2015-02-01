@@ -40,7 +40,7 @@ public class PatternEditorServlet extends HttpServlet {
                 int totalTextfields = Integer.parseInt(req.getParameter("totalTextfields"));
                 System.out.println(totalTextfields);
                 // Try to load a file into this pattern
-                // TODO UITVINDEN HOE WE DEZE DINGEN KUNNEN DOEN IN DE JSP
+                // TODO opslaan file in pattern
 //            String fileName = req.getParameter("fileName");
 //            File file = new File(req.getServletContext().getAttribute("file")+File.separator+fileName);
 //            if(!file.exists()){

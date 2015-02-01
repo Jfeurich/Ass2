@@ -8,11 +8,8 @@
 <%@ page import="Model.Context" %>
 <%@ page import="Model.ContextCategory" %>
 <%@ page import="Model.Pattern" %>
+<%@ page import="logic.Json" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="logic.Disk" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.io.File" %>
-<%@ page import="java.io.IOException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="Header.jsp" >
   <jsp:param name="titel" value="Accountgegevens wijzigen" />
@@ -34,37 +31,38 @@
     </div>
     <%
 
-        Pattern p = new Pattern("Builder Pattern");
-        p.setAllProblems("An application needs to create the elements of a complex aggregate. ");
-        Pattern p2 = new Pattern("Adapter Pattern");
-        p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
-                "You want to use an object in an environment that expects an interface that is different from the object's interface.");
-
-        p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.;");
-        p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces ");
-
-        // file test
-        File file = new File("\\images\\rodepanda.png");
-
-        p.setDiagram(file);
-
-
-
-        Context c = new Context(p.getName());
-        Context co2 = new Context(p2.getName());
-        ContextCategory ccg2 = new ContextCategory("Structural","By Purpose");
-        ContextCategory ccg = new ContextCategory("Object","By Scope");
-        c.addToContext(ccg);
-        co2.addToContext(ccg2);
-        p.setContext(c);
-        p2.setContext(co2);
-
-        ArrayList<Pattern> allePatterns = new ArrayList<Pattern>();
-        // ArrayList<Pattern> allePatterns = Disk.loadPattern();
+//        Pattern p = new Pattern("Builder Pattern");
+//        p.setAllProblems("An application needs to create the elements of a complex aggregate. ");
+//        Pattern p2 = new Pattern("Adapter Pattern");
+//        p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
+//                "You want to use an object in an environment that expects an interface that is different from the object's interface.");
+//
+//        p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.;");
+//        p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces ");
+//
+//        // file test
+//        File file = new File("\\images\\rodepanda.png");
+//
+//        p.setDiagram(file);
+//
+//
+//
+//        Context c = new Context(p.getName());
+//        Context co2 = new Context(p2.getName());
+//        ContextCategory ccg2 = new ContextCategory("Structural","By Purpose");
+//        ContextCategory ccg = new ContextCategory("Object","By Scope");
+//        c.addToContext(ccg);
+//        co2.addToContext(ccg2);
+//        p.setContext(c);
+//        p2.setContext(co2);
+//
+//        ArrayList<Pattern> allePatterns = new ArrayList<Pattern>();
+        ArrayList<Pattern> allePatterns = Json.loadPattern();
         ArrayList<Context> alleContext = new ArrayList<Context>();
         ArrayList<ContextCategory> alleCCategories = new ArrayList<ContextCategory>();
-        allePatterns.add(p);
-        allePatterns.add(p2);%>
+//        allePatterns.add(p);
+//        allePatterns.add(p2);
+    %>
     </div></br>
 
     <div class="Pattern">
@@ -89,10 +87,10 @@
                         String consequences = p99.getAllConsequences();
                         consequences = consequences.replaceAll("(;)","<br/><li>");
 
-                        file = p99.getDiagram();
+                        //file = p99.getDiagram();
                         String url = request.getRequestURL().toString();
                         String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
-                        String filename = baseURL + "/images/" +file.getName();
+                        //String filename = baseURL + "/images/" +file.getName();
 
                      %>
 
@@ -103,7 +101,7 @@
                     <span class="consequences"><ul><li><%=consequences%></li></ul></span>
                     </br>
         Image pattern:</br>
-                    <span class="file"><img src="<%=filename%>"></span>
+                    <span class="file"><img src="<%=//filename%>"></span>
                     </br>
         Image :</br>
         <img src="c:/Users/Elvira/Desktop/websiteuitleg/images/groot/rodepanda2.png">
