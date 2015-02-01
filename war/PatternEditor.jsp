@@ -65,7 +65,7 @@
 </br>
     <h1>Pattern Editor</h1>
 
-<form action="PatternEditorServlet.do" method="post">
+<form action="PatternEditorServlet.do" method="post" enctype="multipart/form-data">
     <% %>
     <div class="patterninfo">
             <label>Pattern name</label></br>
@@ -107,8 +107,6 @@
 
     <div class="import" onclick="javascript:location.href='ImportPattern.jsp'">
         Import patterns
-       <!-- <input type="submit" name="import" value="Import patterns" class="buttonimportexport" onclick="javascript:location.href='ImportPattern.jsp'">
-        -->
     </div>
     <div class="export">
         <input type="submit" name="export" value="Export patterns" class="buttonimportexport" alignright>
