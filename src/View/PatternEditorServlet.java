@@ -73,24 +73,22 @@ public class PatternEditorServlet extends HttpServlet {
                 pb.setConsequences(consequences);
 
                 // TODO: find out why the file stays empty
-//                for (Pattern p : patterns) {
-//                    if (p.getName().equals(pb.getPattern().getName())) {
-//                        patterns.remove(p);
-//                        patterns.add(pb.getPattern());
-//                        savePattern(patterns);
-//                    } else {
-//                        patterns.add(pb.getPattern());
-//                        savePattern(patterns);
-//                    }
-//                }
+                if (patterns.contains(pb.getPattern())) {
+                    patterns.remove(patterns.indexOf(pb.getPatternName()));
+                    patterns.add(pb.getPattern());
+                }
+            else {
                 patterns.add(pb.getPattern());
                 savePattern(patterns);
-                rd = req.getRequestDispatcher("PatternSelector.jsp");
-            } else if (button.equals("Import patterns")) {
-                rd = req.getRequestDispatcher("ImportPattern.jsp");
-            } else if (button.equals("Export patterns")) {
-                rd = req.getRequestDispatcher("PatternSelector.jsp");
             }
-            rd.forward(req, resp);
+            rd = req.getRequestDispatcher("PatternSelector.jsp");
+        }
+        else if (button.equals("Import patterns")) {
+            rd = req.getRequestDispatcher("ImportPattern.jsp");
+        }
+        else if (button.equals("Export patterns")) {
+            rd = req.getRequestDispatcher("PatternSelector.jsp");
+            }
+        rd.forward(req, resp);
     }
 }
