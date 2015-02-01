@@ -11,7 +11,7 @@ public class ContextBuilder {
     private Context context;
     private ArrayList<ContextCategory> contextArray = new ArrayList<ContextCategory>();
     public Context makeContext(String name){
-        Context context= new Context(name);
+        Context context = new Context(name);
         return context;
     }
     public Context getContext(){

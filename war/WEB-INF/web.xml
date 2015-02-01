@@ -10,21 +10,20 @@
         <servlet-name>PatternSelectorServlet</servlet-name>
         <servlet-class>View.PatternSelectorServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>PatternSelectorServlet</servlet-name>
         <url-pattern>/PatternSelectorServlet.do</url-pattern>
     </servlet-mapping>
-    <servlet>
 
+    <servlet>
         <servlet-name>PatternEditorServlet</servlet-name>
         <servlet-class>View.PatternEditorServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>PatternEditorServlet</servlet-name>
         <url-pattern>/PatternEditorServlet.do</url-pattern>
     </servlet-mapping>
+
     <context-param>
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
