@@ -13,18 +13,18 @@ import Model.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import static logic.Json.loadPattern;
 import static logic.Json.savePattern;
-
+@WebServlet
+@MultipartConfig
 public class PatternEditorServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
@@ -47,31 +47,31 @@ public class PatternEditorServlet extends HttpServlet {
 
                 //save file in pattern
 
-                Part FilePart = req.getPart("file");
-                InputStream imageInputStream = FilePart.getInputStream();
-                int i = imageInputStream.available();
-                byte[]b = new byte[i];
-                imageInputStream.read(b);
-                String FileName = FilePart.getSubmittedFileName();
-                FileOutputStream fos = new FileOutputStream(FileName);
-                fos.write(b);
-                imageInputStream.close();
+//                Part FilePart = req.getPart("file");
+//                InputStream imageInputStream = FilePart.getInputStream();
+//                int i = imageInputStream.available();
+//                byte[]b = new byte[i];
+//                imageInputStream.read(b);
+//                String FileName = FilePart.getSubmittedFileName();
+//                FileOutputStream fos = new FileOutputStream(FileName);
+//                fos.write(b);
+//                imageInputStream.close();
                 //File file = new File(FileName);
 
                 //Store everything in pattern
+                //todo uitzoeken waarom builder niet werkt
                 PatternBuilder pb = PatternBuilderFactory.getInstance();
                 ContextBuilder cb = ContextBuilderFactory.getInstance();
                 pb.makePattern(name);
                 cb.makeContext(name);
-
                 ContextCategory cc = new ContextCategory(purpose,scope);
                 cb.addContextCategory(cc);
-
                 pb.addContext(cb.getContext());
                 //pb.addDiagram(file);
                 pb.setAllSolutions(allSolutions);
                 pb.setProblems(allProblems);
                 pb.setConsequences(consequences);
+
                 // TODO: find out why the file stays empty
 //                for (Pattern p : patterns) {
 //                    if (p.getName().equals(pb.getPattern().getName())) {
