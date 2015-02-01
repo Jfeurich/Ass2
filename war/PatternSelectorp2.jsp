@@ -9,6 +9,7 @@
 <%@ page import="Model.ContextCategory" %>
 <%@ page import="Model.Pattern" %>
 <%@ page import="logic.Json" %>
+<%@ page import="java.io.File" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="Header.jsp" >
@@ -61,7 +62,7 @@
                         String consequences = p99.getAllConsequences();
                         consequences = consequences.replaceAll("(;)","<br/><li>");
 
-                        file = p99.getDiagram();
+                        File file = p99.getDiagram();
                         String url = request.getRequestURL().toString();
                         String baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
                         String filename = baseURL + "/images/" +file.getName();
