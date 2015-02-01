@@ -3,6 +3,5 @@
 .idea
 .settings
 *.iml
-/JsonObjects
 ass2.properties
 Ass2.war

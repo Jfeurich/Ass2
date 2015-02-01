@@ -4,15 +4,14 @@ import Model.Context;
 import Model.Pattern;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class PatternBuilder {
 
 	private Pattern pattern;
 
-	public Pattern makePattern(String name){
+	public void makePattern(String name){
 		Pattern pattern = new Pattern(name);
-		return pattern;
+		this.pattern = pattern;
 	}
 
 	public void setPattern(Pattern p){
