@@ -24,9 +24,9 @@ public class PatternImportServlet extends HttpServlet {
             patterns = loadPattern(fileName);
             if (!patterns.isEmpty()) {
                 rd = req.getRequestDispatcher("ImportPatternSuccesfull.jsp");
-            } else
+            } else {
                 throw new FileNotFoundException("Missing file");
-            // woohoo
+                // woohoo
             }
         }
     }

@@ -18,7 +18,7 @@ public class Json  {
 		JsonElement element = gson.toJsonTree(p, new TypeToken<ArrayList<Pattern>>() {}.getType());
 		JsonArray jsonArray = element.getAsJsonArray();
 		String json = gson.toJson(jsonArray);
-		File JsonFile = new File("/JsonObjects/jsonobjects.json");
+		File JsonFile = new File("webapps/Ass2/WEB-INF/JsonObjects/jsonobjects.json");
 		String jsonFilePath = JsonFile.getAbsolutePath();
 		if(!JsonFile.exists()) {
 			try {
@@ -42,7 +42,7 @@ public class Json  {
 		ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 		Gson gson = new Gson();
 		JsonParser jsonParser = new JsonParser();
-		File JsonFile = new File("/JsonObjects/jsonobjects.json");
+		File JsonFile = new File("webapps/Ass2/WEB-INF/JsonObjects/jsonobjects.json");
 		String jsonFilePath = JsonFile.getAbsolutePath();
 		if(!JsonFile.exists()) {
 			try {
@@ -67,7 +67,6 @@ public class Json  {
 
 	// import patterns
 	public static ArrayList<Pattern> loadPattern(String filepath){
-
 		String ext = FilenameUtils.getExtension(""+filepath);
 		ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 		Gson gson = new Gson();

@@ -8,9 +8,9 @@
 <%@ page import="Model.Context" %>
 <%@ page import="Model.ContextCategory" %>
 <%@ page import="Model.Pattern" %>
+<%@ page import="logic.Json" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.io.File" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+        <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="Header.jsp" >
   <jsp:param name="titel" value="Accountgegevens wijzigen" />
 </jsp:include>
@@ -30,45 +30,45 @@
   </div>
   <%
     String pname = request.getParameter("button");
-    Pattern p = new Pattern("Builder Pattern");
-    p.setAllProblems("An application needs to create the elements of a complex aggregate. ");
-    Pattern p2 = new Pattern("Adapter Pattern");
-    p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
-            "You want to use an object in an environment that expects an interface that is different from the object's interface.");
-
-    p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.");
-    p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces. ");
-
-    p.setAllSolutions("Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.\n" +
-            "</br>" +
-            "A Builder class builds the final object step by step. This builder is independent of other objects.");
-    p2.setAllSolutions("Adapter pattern works as a bridge between two incompatible interfaces. This type of design pattern comes under structural pattern as this pattern combines the capability of two independent interfaces.\n" +
-            "</br></br> " +
-            "This pattern involves a single class which is responsible to join functionalities of independent or incompatible interfaces.</br> A real life example could be a case of " +
-            "card reader which acts as an adapter between memory card and a laptop.</br>  You plugin the memory card into card reader and card reader into the laptop so that memory card can be read via laptop.</br> ");
-
-    // file test
-    File file = new File("\\images\\rodepanda.png");
-    File file2 = new File("\\images\\puppies.png");
-    p.setDiagram(file);
-    p2.setDiagram(file2);
-
-
-    Context c = new Context(p.getName());
-    Context co2 = new Context(p2.getName());
-    ContextCategory ccg2 = new ContextCategory("Structural", "By Purpose");
-    ContextCategory ccg = new ContextCategory("Object", "By Scope");
-    c.addToContext(ccg);
-    co2.addToContext(ccg2);
-    p.setContext(c);
-    p2.setContext(co2);
-
-    ArrayList<Pattern> allePatterns = new ArrayList<Pattern>();
-    // ArrayList<Pattern> allePatterns = Disk.loadPattern();
+//    Pattern p = new Pattern("Builder Pattern");
+//    p.setAllProblems("An application needs to create the elements of a complex aggregate. ");
+//    Pattern p2 = new Pattern("Adapter Pattern");
+//    p2.setAllProblems("You want to use an existing class, and its interface does not match the interface you need.;" +
+//            "You want to use an object in an environment that expects an interface that is different from the object's interface.");
+//
+//    p.setAllConsequences("The pattern lets you vary a product's internal representation.;The pattern gives you finer control over the construction process.;The pattern isolates code for construction and representation.");
+//    p2.setAllConsequences("The pattern allows for preexisting objects to fit into new class structures without being limited by their interfaces. ");
+//
+//    p.setAllSolutions("Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.\n" +
+//            "</br>" +
+//            "A Builder class builds the final object step by step. This builder is independent of other objects.");
+//    p2.setAllSolutions("Adapter pattern works as a bridge between two incompatible interfaces. This type of design pattern comes under structural pattern as this pattern combines the capability of two independent interfaces.\n" +
+//            "</br></br> " +
+//            "This pattern involves a single class which is responsible to join functionalities of independent or incompatible interfaces.</br> A real life example could be a case of " +
+//            "card reader which acts as an adapter between memory card and a laptop.</br>  You plugin the memory card into card reader and card reader into the laptop so that memory card can be read via laptop.</br> ");
+//
+//    // file test
+//    File file = new File("\\images\\rodepanda.png");
+//    File file2 = new File("\\images\\puppies.png");
+//    p.setDiagram(file);
+//    p2.setDiagram(file2);
+//
+//
+//    Context c = new Context(p.getName());
+//    Context co2 = new Context(p2.getName());
+//    ContextCategory ccg2 = new ContextCategory("Structural", "By Purpose");
+//    ContextCategory ccg = new ContextCategory("Object", "By Scope");
+//    c.addToContext(ccg);
+//    co2.addToContext(ccg2);
+//    p.setContext(c);
+//    p2.setContext(co2);
+//
+//    ArrayList<Pattern> allePatterns = new ArrayList<Pattern>();
+    ArrayList<Pattern> allePatterns = Json.loadPattern();
     ArrayList<Context> alleContext = new ArrayList<Context>();
     ArrayList<ContextCategory> alleCCategories = new ArrayList<ContextCategory>();
-    allePatterns.add(p);
-    allePatterns.add(p2);
+//    allePatterns.add(p);
+//    allePatterns.add(p2);
 
     String baseURL = null;
     String solution = null;
