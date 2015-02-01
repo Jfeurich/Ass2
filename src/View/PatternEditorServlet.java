@@ -81,16 +81,18 @@ public class PatternEditorServlet extends HttpServlet {
                 pb.setAllSolutions(allSolutions);
                 pb.setProblems(allProblems);
                 pb.setConsequences(consequences);
-//                for (Pattern p1 : patterns) {
-//                    if (p1.getName().equals(pb.getPattern().getName())) {
-//                        patterns.remove(p1);
+                // TODO: uitvinden waarom deze code ervoor zorgt dat Jsonobjects leeg blijft
+//                for (Pattern p : patterns) {
+//                    if (p.getName().equals(pb.getPattern().getName())) {
+//                        patterns.remove(p);
 //                        patterns.add(pb.getPattern());
+//                        savePattern(patterns);
 //                    } else {
 //                        patterns.add(pb.getPattern());
+//                        savePattern(patterns);
 //                    }
 //                }
                 patterns.add(pb.getPattern());
-                //Sla de ArrayList weer op
                 savePattern(patterns);
                 rd = req.getRequestDispatcher("PatternSelector.jsp");
             } else if (button.equals("Import patterns")) {
