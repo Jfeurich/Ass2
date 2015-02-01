@@ -19,6 +19,6 @@
 </head>
 <body>
 <br> <br> <br> <br> <br> <br>
-  <span style="color: white; ">Import succesfull</span>
+  <span style="color: white; ">Import succesfull, Yay</span>
 </body>
 </html>

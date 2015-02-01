@@ -64,7 +64,7 @@
 <html>
 <body>
 </br></br></br></br></br></br>
-
+<span style="color: white; ">Hier bestand uploaden</span></br></br>
 
 <form action="PatternImportServlet.do" method="post">
   <div class="patterninfo">
