@@ -65,13 +65,13 @@
 <body>
 </br></br></br></br></br></br>
 <span style="color: white; ">Hier bestand uploaden</span></br></br>
-
+<!-- "-->
 <form action="PatternImportServlet.do" method="post" enctype="multipart/form-data">
   <div class="patterninfo">
     <!-- file upload -->
     <input type="file" name="file" />
     <!-- einde fileupload -->
-    <input type="submit" name="button" value="Import Patterns" class="button"></div>
+    <input type="submit" name="button2" value="Import" class="button"></div>
   </div>
 </form>
 
