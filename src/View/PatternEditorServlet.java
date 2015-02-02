@@ -10,6 +10,7 @@ import Controller.PatternBuilder;
 import Controller.PatternBuilderFactory;
 import Model.ContextCategory;
 import Model.Pattern;
+import logic.Json;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,21 +19,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static logic.Json.loadPattern;
-import static logic.Json.savePattern;
 @WebServlet
 @MultipartConfig
 public class PatternEditorServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-            String button = req.getParameter("button");
-            RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
-            ArrayList<Pattern> patterns = loadPattern();
-            if (patterns == null) {
+        String button = req.getParameter("button");
+        RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
+        Json json = new Json();
+        ArrayList<Pattern> patterns= json.loadPattern();
+        if (patterns == null) {
                 patterns = new ArrayList<Pattern>();
             }
             // if button is pressed do action
@@ -79,7 +78,7 @@ public class PatternEditorServlet extends HttpServlet {
                 }
             else {
                 patterns.add(pb.getPattern());
-                savePattern(patterns);
+                json.savePattern(patterns);
             }
             rd = req.getRequestDispatcher("PatternSelector.jsp");
         }

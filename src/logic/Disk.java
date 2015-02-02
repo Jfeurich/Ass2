@@ -1,15 +1,12 @@
 package logic;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
 import Model.Pattern;
 
-public class Disk{
-	public static void savePattern(ArrayList<Pattern> p){
+import java.io.*;
+import java.util.ArrayList;
+
+public abstract class Disk implements FileInterface{
+    @Override
+	public void savePattern(ArrayList<Pattern> p){
 	    try {
 			FileOutputStream fos = new FileOutputStream("/JsonObjects/objects.json");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -20,8 +17,8 @@ public class Disk{
 	      ex.printStackTrace();
 	    }
 	}
-
-	public static ArrayList<Pattern> loadPattern(){
+    @Override
+    public ArrayList<Pattern> loadPattern(){
 		ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 	
 		try {

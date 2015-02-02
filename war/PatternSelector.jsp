@@ -18,7 +18,8 @@
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
 <%
-    ArrayList<Pattern> allePatterns = Json.loadPattern();
+    Json json = new Json();
+    ArrayList<Pattern> allePatterns = json.loadPattern();
     if(allePatterns == null){
         allePatterns = new ArrayList<Pattern>();
     }

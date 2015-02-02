@@ -31,7 +31,8 @@
   </div>
   <%
       String pname = request.getParameter("button");
-      ArrayList<Pattern> allePatterns = Json.loadPattern();
+      Json json = new Json();
+      ArrayList<Pattern> allePatterns = json.loadPattern();
       ArrayList<Context> alleContext = new ArrayList<Context>();
       ArrayList<ContextCategory> alleCCategories = new ArrayList<ContextCategory>();
       String baseURL = null;

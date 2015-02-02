@@ -21,8 +21,8 @@
         <title></title>
     </head>
 <%
-
-    ArrayList<Pattern> allePatterns = Json.loadPattern();
+    Json json = new Json();
+    ArrayList<Pattern> allePatterns = json.loadPattern();
     ArrayList<Pattern> geselecteerdePatterns = new ArrayList<Pattern>();
 
     for (Pattern p99 : allePatterns) {

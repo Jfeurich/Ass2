@@ -1,6 +1,7 @@
 package View;
 
 import Model.Pattern;
+import logic.Json;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static logic.Json.loadPattern;
-
 public class PatternImportServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +20,8 @@ public class PatternImportServlet extends HttpServlet {
         ArrayList<Pattern> patterns = new ArrayList<Pattern>();
         if (button.equals("Import Patterns")) {
             String fileName = req.getParameter("file");
-            patterns = loadPattern(fileName);
+            Json json = new Json();
+            patterns = json.loadPattern(fileName);
             if (!patterns.isEmpty()) {
                 rd = req.getRequestDispatcher("ImportPatternSuccesfull.jsp");
             } else {
