@@ -68,35 +68,30 @@ public class Json implements FileInterface  {
 
 	// import patterns
 	public static ArrayList<Pattern> loadPattern(String filepath){
-		String ext = FilenameUtils.getExtension(""+filepath);
 		ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 		Gson gson = new Gson();
 		JsonParser jsonParser = new JsonParser();
-		// if fileextension = .json
-		if(ext.contains(".json")) {
-			File JsonFile = new File("" + filepath);
-			String jsonFilePath = JsonFile.getAbsolutePath();
-			if (!JsonFile.exists()) {
-				try {
-					JsonFile.createNewFile();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			try {
-				BufferedReader br = new BufferedReader(new FileReader(jsonFilePath));
-				JsonElement jsonElement = jsonParser.parse(br);
+        File JsonFile = new File(filepath);
+        String jsonFilePath = JsonFile.getAbsolutePath();
+        if (!JsonFile.exists()) {
+            try {
+                JsonFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(jsonFilePath));
+            JsonElement jsonElement = jsonParser.parse(br);
 
-				//Create generic type
-				Type type = new TypeToken<ArrayList<Pattern>>() {
-				}.getType();
-				return gson.fromJson(jsonElement, type);
+            //Create generic type
+            Type type = new TypeToken<ArrayList<Pattern>>() {
+            }.getType();
+            return gson.fromJson(jsonElement, type);
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return patterns;
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return patterns;
 	}
 }

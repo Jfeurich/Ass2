@@ -49,27 +49,17 @@ public class PatternEditorServlet extends HttpServlet {
             //save file in pattern
 
             Part FilePart = req.getPart("file");
-            InputStream imageInputStream = FilePart.getInputStream();
             String FileName = FilePart.getSubmittedFileName();
-
-            // int i = imageInputStream.available();
-            //byte[]b = new byte[i];
-            // imageInputStream.read(b);
-
             InputStream initialStream = FilePart.getInputStream();
             byte[] buffer = new byte[initialStream.available()];
             initialStream.read(buffer);
-
             File targetFile = new File("..\\webapps\\Ass2\\images\\" + FileName);
             OutputStream outStream = new FileOutputStream(targetFile);
             outStream.write(buffer);
-
-            //  FileOutputStream fos = new FileOutputStream("\\webapps\\Ass2\\images\\"+FileName);
-            // fos.write(b);
-            // imageInputStream.close();
+            outStream.close();
 
             //Store everything in pattern
-            //todo uitzoeken waarom builder niet werkt
+
             PatternBuilder pb = PatternBuilderFactory.getInstance();
             ContextBuilder cb = ContextBuilderFactory.getInstance();
             pb.makePattern(name);
@@ -77,12 +67,11 @@ public class PatternEditorServlet extends HttpServlet {
             ContextCategory cc = new ContextCategory(purpose,scope);
             cb.addContextCategory(cc);
             pb.addContext(cb.getContext());
-            //voeg file in pattrn
             pb.addDiagram(targetFile);
             pb.setAllSolutions(allSolutions);
             pb.setProblems(allProblems);
             pb.setConsequences(consequences);
-            // TODO: find out why the file stays empty
+
             if (patterns.contains(pb.getPattern())) {
                 patterns.remove(patterns.indexOf(pb.getPatternName()));
                 patterns.add(pb.getPattern());

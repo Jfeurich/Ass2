@@ -23,7 +23,6 @@ public abstract class Disk implements FileInterface{
 	
 		try {
 		FileInputStream fis = new FileInputStream("C:\\apache-tomcat-7.0.39\\apache-tomcat-7.0.39\\webapps\\Ass2\\WEB-INF\\JsonObjects");
-
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		try {
 			patterns =(ArrayList<Pattern>) ois.readObject();
