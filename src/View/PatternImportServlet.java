@@ -15,20 +15,24 @@ import java.util.ArrayList;
 public class PatternImportServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Json json = new Json();
         String button = req.getParameter("button");
         RequestDispatcher rd = req.getRequestDispatcher("ImportPattern.jsp");
-        ArrayList<Pattern> patterns = new ArrayList<Pattern>();
+        ArrayList<Pattern> newpatterns = new ArrayList<Pattern>();
+        ArrayList<Pattern> patterns = json.loadPattern();
         if (button.equals("Import Patterns")) {
             String fileName = req.getParameter("file");
-            Json json = new Json();
-            patterns = json.loadPattern(fileName);
-            if (!patterns.isEmpty()) {
+            newpatterns = json.loadPattern(fileName);
+            if (!newpatterns.isEmpty()) {
                 rd = req.getRequestDispatcher("ImportPatternSuccesfull.jsp");
             } else {
                 throw new FileNotFoundException("Missing file");
                 // woohoo
             }
         }
-
+        for(Pattern p : newpatterns){
+            patterns.add(p);
+        }
+        rd.forward(req, resp);
     }
 }
