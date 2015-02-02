@@ -108,8 +108,8 @@
     <div class="import" onclick="javascript:location.href='ImportPattern.jsp'">
         Import patterns
     </div>
-    <div class="export">
-        <input type="submit" name="export" value="Export patterns" class="buttonimportexport" alignright>
+    <div class="export" onclick="javascript:location.href='ExportPattern.jsp'">
+        Export patterns
     </div>
 </form>
 </body>

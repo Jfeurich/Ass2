@@ -55,15 +55,12 @@
         <form action="PatternSelectorp3.jsp" method="GET" >
             <div class="Pattern">
                 <%for(Pattern p : geselecteerdePatterns){%>
-                <tr>
-                    <td><%=p.getName()%></td>
-                    <td><%=p.getAllProblems()%></td>
-                    <td><%=p.getAllConsequences()%></td>
-                    </br>Image pattern:</br>
+                    <tr><%=p.getName()%></tr></br>
+                    <tr><%=p.getAllProblems()%></tr></br>
+                    <tr><%=p.getAllConsequences()%></tr></br>
                     <span class="file"><img src="<%=p.getDiagram()%>"></span>
                     <input type="hidden" name="pattern" value="<%=p.getName()%>">
                     <div class="select"><div class="text">Choose <input type="submit" name="button" value="<%=p.getName()%>"></div></div>
-                </tr>
             <%}%>
             </div>
             </br></br>

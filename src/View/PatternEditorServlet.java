@@ -83,12 +83,6 @@ public class PatternEditorServlet extends HttpServlet {
             }
             rd = req.getRequestDispatcher("PatternSelector.jsp");
         }
-        else if (button.equals("Import patterns")) {
-            rd = req.getRequestDispatcher("ImportPattern.jsp");
-        }
-        else if (button.equals("Export patterns")) {
-            rd = req.getRequestDispatcher("ExportPattern.jsp");
-            }
         rd.forward(req, resp);
     }
 }
