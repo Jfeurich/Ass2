@@ -19,7 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.Part;
+import java.io.*;
 import java.util.ArrayList;
 
 @WebServlet
@@ -30,52 +31,62 @@ public class PatternEditorServlet extends HttpServlet {
         String button = req.getParameter("button");
         RequestDispatcher rd = req.getRequestDispatcher("PatternEditor.jsp");
         Json json = new Json();
-        ArrayList<Pattern> patterns= json.loadPattern();
+        ArrayList<Pattern> patterns = json.loadPattern();
         if (patterns == null) {
-                patterns = new ArrayList<Pattern>();
+            patterns = new ArrayList<Pattern>();
+        }
+        // if button is pressed do action
+        if (button.equals("Add new pattern")) {
+            // Haal de waarden op uit de servlet en sla ze op in een collection van parts.
+
+            String name = req.getParameter("name");;
+            String consequences = req.getParameter("consequences");
+            String allProblems = req.getParameter("problems");
+            String allSolutions = req.getParameter("solutions");
+            String purpose = req.getParameter("mytext");
+            String scope = req.getParameter("subcat");
+
+            //save file in pattern
+
+            Part FilePart = req.getPart("file");
+            InputStream imageInputStream = FilePart.getInputStream();
+            String FileName = FilePart.getSubmittedFileName();
+
+            // int i = imageInputStream.available();
+            //byte[]b = new byte[i];
+            // imageInputStream.read(b);
+
+            InputStream initialStream = FilePart.getInputStream();
+            byte[] buffer = new byte[initialStream.available()];
+            initialStream.read(buffer);
+
+            File targetFile = new File("..\\webapps\\Ass2\\images\\" + FileName);
+            OutputStream outStream = new FileOutputStream(targetFile);
+            outStream.write(buffer);
+
+            //  FileOutputStream fos = new FileOutputStream("\\webapps\\Ass2\\images\\"+FileName);
+            // fos.write(b);
+            // imageInputStream.close();
+
+            //Store everything in pattern
+            //todo uitzoeken waarom builder niet werkt
+            PatternBuilder pb = PatternBuilderFactory.getInstance();
+            ContextBuilder cb = ContextBuilderFactory.getInstance();
+            pb.makePattern(name);
+            cb.makeContext(name);
+            ContextCategory cc = new ContextCategory(purpose,scope);
+            cb.addContextCategory(cc);
+            pb.addContext(cb.getContext());
+            //voeg file in pattrn
+            pb.addDiagram(targetFile);
+            pb.setAllSolutions(allSolutions);
+            pb.setProblems(allProblems);
+            pb.setConsequences(consequences);
+            // TODO: find out why the file stays empty
+            if (patterns.contains(pb.getPattern())) {
+                patterns.remove(patterns.indexOf(pb.getPatternName()));
+                patterns.add(pb.getPattern());
             }
-            // if button is pressed do action
-            if (button.equals("Add new pattern")) {
-                // Haal de waarden op uit de servlet en sla ze op in een collection van parts.
-
-                String name = req.getParameter("name");;
-                String consequences = req.getParameter("consequences");
-                String allProblems = req.getParameter("problems");
-                String allSolutions = req.getParameter("solutions");
-                String purpose = req.getParameter("mytext");
-                String scope = req.getParameter("subcat");
-
-                //save file in pattern
-
-//                Part FilePart = req.getPart("file");
-//                InputStream imageInputStream = FilePart.getInputStream();
-//                int i = imageInputStream.available();
-//                byte[]b = new byte[i];
-//                imageInputStream.read(b);
-//                String FileName = FilePart.getSubmittedFileName();
-//                FileOutputStream fos = new FileOutputStream(FileName);
-//                fos.write(b);
-//                imageInputStream.close();
-                //File file = new File(FileName);
-
-                //Store everything in pattern
-                //todo uitzoeken waarom builder niet werkt
-                PatternBuilder pb = PatternBuilderFactory.getInstance();
-                ContextBuilder cb = ContextBuilderFactory.getInstance();
-                pb.makePattern(name);
-                cb.makeContext(name);
-                ContextCategory cc = new ContextCategory(purpose,scope);
-                cb.addContextCategory(cc);
-                pb.addContext(cb.getContext());
-                //pb.addDiagram(file);
-                pb.setAllSolutions(allSolutions);
-                pb.setProblems(allProblems);
-                pb.setConsequences(consequences);
-                // TODO: find out why the file stays empty
-                if (patterns.contains(pb.getPattern())) {
-                    patterns.remove(patterns.indexOf(pb.getPatternName()));
-                    patterns.add(pb.getPattern());
-                }
             else {
                 patterns.add(pb.getPattern());
                 json.savePattern(patterns);

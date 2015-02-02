@@ -8,7 +8,7 @@ public abstract class Disk implements FileInterface{
     @Override
 	public void savePattern(ArrayList<Pattern> p){
 	    try {
-			FileOutputStream fos = new FileOutputStream("/JsonObjects/objects.json");
+			FileOutputStream fos = new FileOutputStream("C:\\apache-tomcat-7.0.39\\apache-tomcat-7.0.39\\webapps\\Ass2\\WEB-INF\\JsonObjects");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 	      	oos.writeObject(p);
 	      	oos.close();
@@ -22,7 +22,7 @@ public abstract class Disk implements FileInterface{
 		ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 	
 		try {
-		FileInputStream fis = new FileInputStream("/JsonObjects/objects.json");
+		FileInputStream fis = new FileInputStream("C:\\apache-tomcat-7.0.39\\apache-tomcat-7.0.39\\webapps\\Ass2\\WEB-INF\\JsonObjects");
 
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		try {

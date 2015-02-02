@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Tomcat">
-    <serverData>
-      <paths name="Tomcat">
-        <serverdata>
-          <mappings>
-            <mapping deploy="webapps/Ass2" local="$PROJECT_DIR$" web="/webapps/Ass2" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
-  </component>
+  <component name="PublishConfigData" serverName="Tomcat" />
 </project>

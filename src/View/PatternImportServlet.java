@@ -29,5 +29,6 @@ public class PatternImportServlet extends HttpServlet {
                 // woohoo
             }
         }
+
     }
 }

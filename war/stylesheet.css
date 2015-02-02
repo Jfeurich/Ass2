@@ -66,8 +66,9 @@ h1{
     border-radius:0.2em;
 }
 
-.labelinfo input[type="text"]{ width:280px;  }
-.labelinfo textarea{ width:280px;}
+.labelinfo input[type="text"]{ width:280px; border:none; outline:0; }
+
+.labelinfo textarea{ width:280px; border:none; outline:0;}
 
 #subtypeLabel{  margin-left:70px  }
 
@@ -152,7 +153,19 @@ h1{
 .export{
     position:fixed;
     bottom:0px;
+    padding:10px;
+    position:fixed;
+    bottom:0px;
     right:0px;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+    background:black;
+}
+.export:hover{
+    background:#002e56;
+    box-shadow: 2px 2px 2px #002545;
+    cursor:pointer;
 }
 
 

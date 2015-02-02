@@ -54,12 +54,26 @@
         </div></br>
         <form action="PatternSelectorp3.jsp" method="GET" >
             <div class="Pattern">
-                <%for(Pattern p : geselecteerdePatterns){%>
-                    <tr><%=p.getName()%></tr></br>
-                    <tr><%=p.getAllProblems()%></tr></br>
-                    <tr><%=p.getAllConsequences()%></tr></br>
-                    <span class="file"><img src="<%=p.getDiagram()%>"></span>
-                    <input type="hidden" name="pattern" value="<%=p.getName()%>">
+                <%for(Pattern p : geselecteerdePatterns){
+                    // get problem and replace all ; with a newline.
+                    String problem = p.getAllProblems();
+                    problem = problem.replaceAll("(;)", "<br />" );
+                    // get consequences and replace all ; with a newline.
+                    String cons = p.getAllConsequences();
+                    cons = cons.replaceAll("(;)", "<br />" );
+                %>
+                 <div class="pattername"><%=p.getName()%></div>
+               <span class="title">Problems:</span></br>
+                <span class="problem"><ul><li><%=problem%></li></ul></span>
+                <span class="title">Consequences:</span></br>
+                <span class="consequences"><ul><li><%=cons%></li></ul></span>
+
+
+                <!--
+                <% String image = p.getDiagram().getName();%>
+                    <span>Image filepad:</br><img src="images/<%=image%>"></span>
+                   <!-- <span class="file"><img src="<%=p.getDiagram()%>"></span>-->
+                   <!-- <input type="hidden" name="pattern" value="<%=p.getName()%>">-->
                     <div class="select"><div class="text">Choose <input type="submit" name="button" value="<%=p.getName()%>"></div></div>
             <%}%>
             </div>

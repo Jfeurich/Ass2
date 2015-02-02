@@ -72,9 +72,11 @@
         <div class="labelinfo">
             <input type="text" name="name">
         </div>
-            <label>Problems</label></br>
+        </br>
+        <label>Problems</label></br>
         <div class="labelinfo">
-            <input type="text" name="problems">
+            <textarea name="problems"></textarea><br/>
+            <span class="note">Please separate the consequences with a semi-colon (;) </span>
         </div>
 
         </br><label>Consequences</label></br>

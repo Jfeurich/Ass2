@@ -38,6 +38,7 @@
       String baseURL = null;
       String solution = null;
       File file = null;
+      String image = "";
       for (Pattern p99 : allePatterns) {
           for (ContextCategory cc : p99.getContext().getContextCategory()) {
               if (pname.equals(p99.getName())) {
@@ -53,6 +54,7 @@
                   String url = request.getRequestURL().toString();
                   solution = p99.getAllSolutions();
                   baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
+                  image = p99.getDiagram().getName();
               }
           }
       }
@@ -61,8 +63,10 @@
   </div>
   <div class="choosenpattern">
     <div class="choosentitle"><%=pname%></div>
-    <div class="solutiontext"><%=solution%></div>
-    <%--<div class="choosendiagram"><div class="choosentitle">Diagram:</div><img src="<%=baseURL + "/images/" + file.getName()%>"></div>--%>
+    <div class="solutiontext">Solution:</br><%=solution%></div>
+    <div class="choosendiagram"><div class="choosentitle">Diagram:</div>
+        <span><img src="images/<%=image%>" width="300"></span>
+    </div>
 
   </div>
 </br></br>
