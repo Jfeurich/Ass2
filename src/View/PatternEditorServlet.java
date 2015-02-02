@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class PatternEditorServlet extends HttpServlet {
                 // Haal de waarden op uit de servlet en sla ze op in een collection van parts.
 
                 String name = req.getParameter("name");;
-                String consequences = req.getParameter("conseqences");
+                String consequences = req.getParameter("consequences");
                 String allProblems = req.getParameter("problems");
                 String allSolutions = req.getParameter("solutions");
                 String purpose = req.getParameter("mytext");
@@ -71,7 +72,6 @@ public class PatternEditorServlet extends HttpServlet {
                 pb.setAllSolutions(allSolutions);
                 pb.setProblems(allProblems);
                 pb.setConsequences(consequences);
-
                 // TODO: find out why the file stays empty
                 if (patterns.contains(pb.getPattern())) {
                     patterns.remove(patterns.indexOf(pb.getPatternName()));
@@ -87,7 +87,7 @@ public class PatternEditorServlet extends HttpServlet {
             rd = req.getRequestDispatcher("ImportPattern.jsp");
         }
         else if (button.equals("Export patterns")) {
-            rd = req.getRequestDispatcher("PatternSelector.jsp");
+            rd = req.getRequestDispatcher("ExportPattern.jsp");
             }
         rd.forward(req, resp);
     }

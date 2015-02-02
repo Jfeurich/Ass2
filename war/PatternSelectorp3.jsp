@@ -48,7 +48,7 @@
                   String consequences = p99.getAllConsequences();
                   consequences = consequences.replaceAll("(;)", "<br/><li>");
 
-                  file = p99.getDiagram();
+                  //file = p99.getDiagram();
                   String url = request.getRequestURL().toString();
                   solution = p99.getAllSolutions();
                   baseURL = url.substring(0, url.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
@@ -61,7 +61,7 @@
   <div class="choosenpattern">
     <div class="choosentitle"><%=pname%></div>
     <div class="solutiontext"><%=solution%></div>
-    <div class="choosendiagram"><div class="choosentitle">Diagram:</div><img src="<%=baseURL + "/images/" + file.getName()%>"></div>
+    <%--<div class="choosendiagram"><div class="choosentitle">Diagram:</div><img src="<%=baseURL + "/images/" + file.getName()%>"></div>--%>
 
   </div>
 </br></br>

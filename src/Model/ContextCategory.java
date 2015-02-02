@@ -11,6 +11,9 @@ public class ContextCategory {
         this.description = des;
         this.categoryName = catName;
     }
+    /*de naamgeving van deze klasse komt uit een tijd dat een contextcategorie of scope of purpose of iets anders kon zijn dat
+    * vrij te definieren was in het systeem. Helaas bleek de implementatie van een variabele hoeveelheid van contextcategorieen
+    * in het systeem niet praktisch vanwege technische problemen.*/
 
     public String getCategoryName() {
         return categoryName;
