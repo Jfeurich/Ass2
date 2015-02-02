@@ -33,6 +33,7 @@ public class PatternImportServlet extends HttpServlet {
         for(Pattern p : newpatterns){
             patterns.add(p);
         }
+        rd = req.getRequestDispatcher("ImportPatternSuccesfull.jsp");
         rd.forward(req, resp);
     }
 }
