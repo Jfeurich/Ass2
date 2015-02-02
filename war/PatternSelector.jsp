@@ -65,7 +65,7 @@
 <h1>Pattern Selector</h1>
 <div class="patterninfo">
 
-    <label>Purpose</label><br/>
+    <label>Scope</label><br/>
     <form action="PatternSelectorp2.jsp" method="GET" >
         <select name = "categorynamelist" size="5">
            <% Iterator iter = hashset2.iterator();
@@ -73,7 +73,7 @@
             <option><%=iter.next()%></option>
           <% }%>
         </select></br>
-        <label>Scope</label></br>
+        <label>Purpose</label></br>
         <select name = "subtypelist" size="5">
             <% Iterator iter2 = hashset3.iterator();
                 while (iter2.hasNext()) {%>
